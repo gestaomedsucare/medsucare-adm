@@ -3,2130 +3,1135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedSuCare - Sistema de Gestão Empresarial</title>
-    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Gestão MedSuCare</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #10b981 0%, #065f46 50%, #064e3b 100%);
-        }
-        
-        .gradient-blue {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-        }
-        
-        .gradient-orange {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-        
-        .card-gradient {
-            background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
-        }
-        
-        .btn-gradient {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
-        }
-        
-        .btn-gradient:active {
-            transform: translateY(0);
-        }
-        
-        .sidebar-item:hover {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
-        }
-        
-        .sidebar-item.active {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.1) 100%);
-            border-left: 4px solid #10b981;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        .pulse-success {
-            animation: pulse 2s infinite, glow 1.5s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
-            to { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
-        }
-        
-        .badge-green {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-        
-        .badge-orange {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-        }
-        
-        .badge-blue {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-        }
-        
-        .badge-purple {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-        }
-        
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        
-        .status-dot.green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-        .status-dot.orange { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
-        .status-dot.red { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
-        
-        body {
-            background: linear-gradient(180deg, #f8fafc 0%, #ecfdf5 100%);
-        }
-        
-        .login-gradient {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-        }
-        
-        .btn-google {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-google:hover {
-            background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .shadow-lg-custom {
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-        }
-        
-        .scrollbar-thin::-webkit-scrollbar {
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
             width: 6px;
+            height: 6px;
         }
-        
-        .scrollbar-thin::-webkit-scrollbar-track {
-            background: #f0fdf4;
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
         }
-        
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+        ::-webkit-scrollbar-thumb {
+            background: #20637D; 
             border-radius: 3px;
         }
-        
-        .sync-btn {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            transition: all 0.3s ease;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1a4f63; 
         }
         
-        .sync-btn:hover {
-            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
-            transform: scale(1.02);
-        }
+        .brand-bg { background-color: #20637D; }
+        .brand-text { color: #20637D; }
+        .brand-border { border-color: #20637D; }
         
-        .text-gradient {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .chat-bubble {
+            max-width: 80%;
+            word-wrap: break-word;
         }
-        
-        .progress-gradient::-webkit-progress-bar {
-            background: #e0f2fe;
-        }
-        
-        .progress-gradient::-webkit-progress-value {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-        
-        .notification {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-        }
-        
-        .notification-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
-        }
-        
-        .notification-error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
-        }
-        
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-        
-        table th {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+        .chat-bubble.sent {
+            background-color: #20637D;
             color: white;
+            align-self: flex-end;
+            border-radius: 15px 15px 0 15px;
         }
-        
-        table tr:hover {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.03) 100%);
+        .chat-bubble.received {
+            background-color: #e5e7eb;
+            color: black;
+            align-self: flex-start;
+            border-radius: 15px 15px 15px 0;
         }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-danger:hover {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-        }
-        
-        .btn-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-warning:hover {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-        }
-        
-        .btn-outline {
-            border: 2px solid #10b981;
-            background: transparent;
-            color: #047857;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline:hover {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-        
-        .input-focus:focus {
-            border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-        
-        .input-focus:focus-visible {
-            outline: none;
-        }
-        
-        .border-glow {
-            border: 2px solid #10b981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        .modal-overlay {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
-        }
-        
-        .tab-active {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-        
-        .tab-inactive {
-            background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
-            color: #065f46;
-        }
-        
-        .tab-inactive:hover {
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-        }
-        
-        .file-input {
-            transition: all 0.3s ease;
-        }
-        
-        .file-input:hover {
-            background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
-        }
-        
-        .number-input::-webkit-outer-spin-button,
-        .number-input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        
-        .number-input {
-            -moz-appearance: textfield;
-        }
-        
-        .btn-float {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-        }
-        
-        .btn-float:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
-        }
-        
-        .grid-custom {
-            background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
-        }
-        
-        .success-toast {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-        }
-        
-        .info-toast {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-        }
-        
-        .warning-toast {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
-        }
-        
-        .error-toast {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
-        }
-        
-        .btn-action {
-            transition: all 0.2s ease;
-        }
-        
-        .btn-action:hover {
-            transform: translateY(-1px);
-        }
-        
-        .btn-action:active {
-            transform: translateY(0);
-        }
-        
-        .filter-active {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-            color: white;
-        }
-        
-        .filter-inactive {
-            background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
-            color: #065f46;
-        }
-        
-        .filter-inactive:hover {
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-        }
-        
-        .menu-divider {
-            border-bottom: 1px solid linear-gradient(90deg, transparent 0%, #065f46 50%, transparent 100%);
-        }
-        
-        .logo-text {
-            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-title {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-            color: white;
-        }
-        
-        .pill-success {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
-            color: #047857;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        
-        .pill-warning {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
-            color: #d97706;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        
-        .pill-danger {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
-            color: #dc2626;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-        
-        .pill-info {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.05) 100%);
-            color: #1d4ed8;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+
+        /* Print Styles for Labels */
+        @media print {
+            body * { visibility: hidden; }
+            #print-area, #print-area * { visibility: visible; }
+            #print-area { position: absolute; left: 0; top: 0; width: 100%; }
+            .no-print { display: none !important; }
         }
     </style>
 </head>
+<body class="bg-gray-100 text-gray-800 font-sans h-screen flex flex-col overflow-hidden">
 
-<body class="min-h-screen text-slate-700">
-    <!-- HEADER -->
-    <header class="gradient-blue shadow-2xl sticky top-0 z-40">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between flex-wrap gap-4">
-                <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-hospital text-white text-3xl"></i>
-                    <h1 class="text-[clamp(1.5rem,3vw,2.25rem)] font-extrabold text-white tracking-tight">
-                        <span class="text-yellow-300">Med</span>SuCare
-                    </h1>
-                </div>
-                
-                <!-- Navegação Desktop -->
-                <div class="flex items-center gap-6 flex-1 justify-center">
-                    <a href="#dashboard" class="text-white hover:text-yellow-300 font-semibold transition-all duration-300 px-3 py-2 rounded-full hover:bg-white/10 text-sm md:text-base nav-link">
-                        <i class="fas fa-chart-pie mr-2"></i> Dashboard
-                    </a>
-                    <a href="#os" class="text-white hover:text-yellow-300 font-semibold transition-all duration-300 px-3 py-2 rounded-full hover:bg-white/10 text-sm md:text-base nav-link">
-                        <i class="fas fa-file-invoice-dollar mr-2"></i> OS
-                    </a>
-                    <a href="#clientes" class="text-white hover:text-yellow-300 font-semibold transition-all duration-300 px-3 py-2 rounded-full hover:bg-white/10 text-sm md:text-base nav-link">
-                        <i class="fas fa-users mr-2"></i> Clientes
-                    </a>
-                    <a href="#produtos" class="text-white hover:text-yellow-300 font-semibold transition-all duration-300 px-3 py-2 rounded-full hover:bg-white/10 text-sm md:text-base nav-link">
-                        <i class="fas fa-boxes mr-2"></i> Produtos
-                    </a>
-                    <a href="#producao" class="text-white hover:text-yellow-300 font-semibold transition-all duration-300 px-3 py-2 rounded-full hover:bg-white/10 text-sm md:text-base nav-link">
-                        <i class="fas fa-industry mr-2"></i> Produção
-                    </a>
-                </div>
-                
-                <!-- Menu de Usuário -->
-                <div class="flex items-center gap-4">
-                    <button id="syncBtn" class="sync-btn text-white px-6 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg">
-                        <i class="fas fa-sync fa-spin text-yellow-300"></i> Sync
-                    </button>
-                    
-                    <div class="flex items-center gap-3 bg-white/10 p-1 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" 
-                             alt="User" 
-                             class="w-10 h-10 rounded-full border-2 border-white shadow">
-                        <div class="text-left hidden md:block">
-                            <p class="text-white text-sm font-semibold">Dr. Lucas Silva</p>
-                            <p class="text-blue-100 text-xs"><i class="fas fa-crown text-yellow-300 mr-1"></i> Admin</p>
-                        </div>
-                        <button id="userMenuBtn" class="text-white hover:text-yellow-300 p-2 rounded-full hover:bg-white/20">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Google API Loader -->
+    <script>
+        // Global State
+        const CONFIG = {
+            API_KEY: 'AIzaSyD-9tuxZ9qcVhSU8zKkT9XzY0rkf8jsVzY', // Public API Key
+            CLIENT_ID: '1068094715814-1l921uhaue0h7k9bv0i4qhav9ima23fu.apps.googleusercontent.com',
+            DISCOVERY_DOCS: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+            SCOPES: 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.readonly',
+            SPREADSHEET_ID: '1IJHX7IDnHhxa3_TxBBBjQxlomhH594Q6HAgnoItCmwA',
+            LOGO_URL: 'https://drive.google.com/uc?export=view&id=1V_lVXX9-MBvnMcK6AORy-dqbMbdBheFi'
+        };
 
-    <!-- MAIN CONTENT -->
-    <main class="container mx-auto px-6 py-8 max-w-7xl">
-        <!-- WELCOME SECTION -->
-        <section id="welcome" class="mb-8">
-            <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-3xl p-8 border-2 border-green-100 shadow-xl">
-                <h2 class="text-3xl font-bold text-slate-800 mb-3 flex items-center gap-3">
-                    <i class="fas fa-hand-holding-medical text-green-600"></i>
-                    Bem-vindo ao Sistema MedSuCare!
-                </h2>
-                <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                    Sistema de Gestão Completo para Aventais Hospitalares, Capotes e Outros Produtos Hospitalares. 
-                    Controle de Estoque, Produção, Vendas e Finanças de forma simples e eficiente.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 mt-6">
-                    <a href="#os" class="btn-gradient text-white px-8 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-lg">
-                        <i class="fas fa-plus-circle"></i> Nova OS
-                    </a>
-                    <a href="#produtos" class="btn-primary text-white px-8 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-lg">
-                        <i class="fas fa-search"></i> Catálogo
-                    </a>
-                    <a href="#producao" class="btn-warning text-white px-8 py-3 rounded-2xl font-semibold flex items-center gap-2 shadow-lg">
-                        <i class="fas fa-cogs"></i> Produção
-                    </a>
-                    <a href="#relatorios" class="btn-outline px-8 py-3 rounded-2xl font-semibold flex items-center gap-2">
-                        <i class="fas fa-file-export"></i> Relatórios
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- STATS GRID -->
-        <section id="dashboard" class="mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                <i class="fas fa-chart-line text-emerald-600"></i>
-                Dashboard de Operações
-            </h2>
+        let gapiInited = false;
+        let gisInited = false;
+        let currentUser = null;
+        let currentView = 'login';
+        let userRole = null;
+
+        // Initialize GAPI
+        function gapiLoaded() {
+            gapi.load('client', initializeGapiClient);
+        }
+
+        async function initializeGapiClient() {
+            await gapi.client.init({
+                apiKey: CONFIG.API_KEY,
+                discoveryDocs: CONFIG.DISCOVERY_DOCS,
+            });
+            gapiInited = true;
+            maybeEnableButtons();
+        }
+
+        function gisLoaded() {
+            const tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CONFIG.CLIENT_ID,
+                scope: CONFIG.SCOPES,
+                callback: (tokenResponse) => {
+                    if (tokenResponse.error) {
+                        console.error(tokenResponse);
+                        alert('Erro de autenticação: ' + tokenResponse.error);
+                        return;
+                    }
+                    handleAuthResult(tokenResponse);
+                },
+            });
+            gisInited = true;
+            maybeEnableButtons();
+            window.tokenClient = tokenClient;
+        }
+
+        function maybeEnableButtons() {
+            if (gapiInited && gisInited) {
+                document.getElementById('login-btn').disabled = false;
+            }
+        }
+
+        async function handleAuthResult(tokenResponse) {
+            const user = google.accounts.oauth2.initTokenClient.user;
+            const email = user.w3.U3; // Extract email
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <!-- OS Ativas -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 card-hover">
-                    <h3 class="text-blue-700 font-semibold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-clipboard-list"></i> OS Ativas
-                    </h3>
-                    <p class="text-5xl font-extrabold text-blue-700 mb-3" id="countOS">124</p>
-                    <p class="text-blue-600 text-sm">⬆️ 23% este mês</p>
-                </div>
+            // Verify user in Sheets
+            const userData = await fetchSheetData('Usuários');
+            const validUser = userData.find(row => row[0] === email);
+
+            if (validUser) {
+                currentUser = { email, name: validUser[1], role: validUser[2] };
+                userRole = validUser[2];
+                showApp();
+            } else {
+                // Check if pending request exists
+                const reqData = await fetchSheetData('Solicitações');
+                const existingReq = reqData.find(row => row[0] === email);
                 
-                <!-- Clientes -->
-                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200 card-hover">
-                    <h3 class="text-emerald-700 font-semibold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-hospital-user"></i> Clientes
-                    </h3>
-                    <p class="text-5xl font-extrabold text-emerald-700 mb-3" id="countClientes">456</p>
-                    <p class="text-emerald-600 text-sm">⬆️ 15% este mês</p>
-                </div>
-                
-                <!-- Estoque -->
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border border-orange-200 card-hover">
-                    <h3 class="text-orange-700 font-semibold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-warehouse"></i> Estoque
-                    </h3>
-                    <p class="text-5xl font-extrabold text-orange-700 mb-3" id="countEstoque">5,800</p>
-                    <p class="text-orange-600 text-sm">⬇️ 8% este mês</p>
-                </div>
-                
-                <!-- Vendas -->
-                <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 border border-amber-200 card-hover">
-                    <h3 class="text-amber-700 font-semibold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-cash-register"></i> Vendas
-                    </h3>
-                    <p class="text-5xl font-extrabold text-amber-700 mb-3" id="countVendas">R$ 148K</p>
-                    <p class="text-amber-600 text-sm">⬆️ 18% este mês</p>
-                </div>
-            </div>
+                if (!existingReq) {
+                    // Register request
+                    await appendSheetData('Solicitações', [email, user.name || 'N/A', new Date().toLocaleString()]);
+                    alert('Sua conta não tem permissão. Uma solicitação de acesso foi enviada ao administrador.');
+                } else {
+                    alert('Sua solicitação já foi registrada e está pendente de aprovação.');
+                }
+                google.accounts.oauth2.revoke(tokenResponse.access_token);
+            }
+        }
+
+        // --- Sheets API Helpers ---
+        async function fetchSheetData(sheetName) {
+            try {
+                const response = await gapi.client.sheets.spreadsheets.values.get({
+                    spreadsheetId: CONFIG.SPREADSHEET_ID,
+                    range: sheetName,
+                });
+                return response.result.values || [];
+            } catch (err) {
+                console.error('Error fetching data:', err);
+                return [];
+            }
+        }
+
+        async function appendSheetData(sheetName, rowData) {
+            try {
+                await gapi.client.sheets.spreadsheets.values.append({
+                    spreadsheetId: CONFIG.SPREADSHEET_ID,
+                    range: sheetName,
+                    valueInputOption: 'USER_ENTERED',
+                    resource: { values: [rowData] }
+                });
+            } catch (err) {
+                console.error('Error appending data:', err);
+            }
+        }
+
+        async function updateSheetData(sheetName, rowIndex, columnIndex, value) {
+            const range = `${sheetName}!${String.fromCharCode(65 + columnIndex)}${rowIndex + 1}`;
+            try {
+                await gapi.client.sheets.spreadsheets.values.update({
+                    spreadsheetId: CONFIG.SPREADSHEET_ID,
+                    range: range,
+                    valueInputOption: 'USER_ENTERED',
+                    resource: { values: [[value]] }
+                });
+            } catch (err) {
+                console.error('Error updating data:', err);
+            }
+        }
+
+        // --- Lógica da Interface ---
+        function showApp() {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('app-container').classList.remove('hidden');
+            renderSidebar();
+            navigateTo('dashboard');
+        }
+
+        function renderSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let links = `
+                <a href="#" onclick="navigateTo('dashboard')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-home w-6"></i> <span class="ml-2">Dashboard</span></a>
+            `;
+            let mobileLinks = `
+                <a href="#" onclick="navigateTo('dashboard'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-home w-6"></i> <span class="ml-2">Dashboard</span></a>
+            `;
+
+            if (userRole === 'ADMIN' || userRole === 'VENDEDOR') {
+                links += `<a href="#" onclick="navigateTo('clientes')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-users w-6"></i> <span class="ml-2">Clientes</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('clientes'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-users w-6"></i> <span class="ml-2">Clientes</span></a>`;
+            }
+            if (userRole === 'ADMIN' || userRole === 'COMPRADOR') {
+                links += `<a href="#" onclick="navigateTo('fornecedores')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-truck w-6"></i> <span class="ml-2">Fornecedores</span></a>`;
+                links += `<a href="#" onclick="navigateTo('estoque')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-boxes w-6"></i> <span class="ml-2">Estoque</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('fornecedores'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-truck w-6"></i> <span class="ml-2">Fornecedores</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('estoque'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-boxes w-6"></i> <span class="ml-2">Estoque</span></a>`;
+            }
+            if (userRole === 'ADMIN' || userRole === 'CHEFE DE PRODUÇÃO') {
+                links += `<a href="#" onclick="navigateTo('os')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-clipboard-list w-6"></i> <span class="ml-2">Ordens de Serviço</span></a>`;
+                links += `<a href="#" onclick="navigateTo('producao')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-industry w-6"></i> <span class="ml-2">Produção</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('os'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-clipboard-list w-6"></i> <span class="ml-2">Ordens de Serviço</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('producao'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-industry w-6"></i> <span class="ml-2">Produção</span></a>`;
+            }
+            if (userRole === 'ADMIN') {
+                links += `<a href="#" onclick="navigateTo('usuarios')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-user-shield w-6"></i> <span class="ml-2">Usuários</span></a>`;
+                links += `<a href="#" onclick="navigateTo('financeiro')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-file-invoice-dollar w-6"></i> <span class="ml-2">Financeiro</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('usuarios'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-user-shield w-6"></i> <span class="ml-2">Usuários</span></a>`;
+                mobileLinks += `<a href="#" onclick="navigateTo('financeiro'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-file-invoice-dollar w-6"></i> <span class="ml-2">Financeiro</span></a>`;
+            }
             
-            <!-- Charts & Info Cards -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Last OS -->
-                <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 border border-slate-200 card-hover">
-                    <h3 class="text-slate-700 font-semibold text-xl mb-4 pb-2 border-b border-slate-300">
-                        <i class="fas fa-clock-rotate-left text-slate-600"></i> Últimas OS
-                    </h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <div>
-                                <p class="font-semibold text-slate-800">OS-10245</p>
-                                <p class="text-xs text-slate-500">Hospital São Lucas</p>
-                            </div>
-                            <span class="pill-success px-3 py-1 rounded-full text-sm font-semibold">
-                                <i class="fas fa-circle-check"></i> Concluída
-                            </span>
-                        </li>
-                        
-                        <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <div>
-                                <p class="font-semibold text-slate-800">OS-10246</p>
-                                <p class="text-xs text-slate-500">Clínica Vida Verde</p>
-                            </div>
-                            <span class="pill-warning px-3 py-1 rounded-full text-sm font-semibold">
-                                <i class="fas fa-hourglass-half"></i> Em Produção
-                            </span>
-                        </li>
-                        
-                        <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <div>
-                                <p class="font-semibold text-slate-800">OS-10247</p>
-                                <p class="text-xs text-slate-500">Hospital Regional</p>
-                            </div>
-                            <span class="pill-info px-3 py-1 rounded-full text-sm font-semibold">
-                                <i class="fas fa-shipping-fast"></i> Entrega
-                            </span>
-                        </li>
-                    </ul>
+            links += `<a href="#" onclick="navigateTo('chat')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-comments w-6"></i> <span class="ml-2">Comunicação</span></a>`;
+            links += `<a href="#" onclick="navigateTo('calculadora')" class="flex items-center p-3 hover:bg-blue-700 transition"><i class="fas fa-calculator w-6"></i> <span class="ml-2">Calculadora de Fardos</span></a>`;
+            mobileLinks += `<a href="#" onclick="navigateTo('chat'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-comments w-6"></i> <span class="ml-2">Comunicação</span></a>`;
+            mobileLinks += `<a href="#" onclick="navigateTo('calculadora'); document.getElementById('mobile-menu').classList.add('hidden')" class="flex items-center p-3 hover:bg-blue-700 transition border-b border-blue-800"><i class="fas fa-calculator w-6"></i> <span class="ml-2">Calculadora de Fardos</span></a>`;
+            
+            sidebar.innerHTML = `
+                <div class="p-4 border-b border-blue-700 flex items-center justify-center">
+                    <img src="${CONFIG.LOGO_URL}" alt="Logo MedSuCare" class="h-10 w-auto">
                 </div>
+                <div class="flex-1 overflow-y-auto py-2">
+                    ${links}
+                </div>
+                <div class="p-4 border-t border-blue-700">
+                    <div class="text-white text-sm mb-2">${currentUser.name}</div>
+                    <div class="text-white text-xs opacity-75 mb-3">${userRole}</div>
+                    <button onclick="logout()" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded text-sm transition">Sair</button>
+                </div>
+            `;
+            
+            // Atualizar o menu mobile
+            mobileMenu.innerHTML = mobileLinks;
+        }
+
+        function navigateTo(view) {
+            currentView = view;
+            document.querySelectorAll('#sidebar a').forEach(el => el.classList.remove('bg-blue-700'));
+            // Highlight active (simplified)
+            
+            // Hide all views
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            
+            // Show target view
+            const target = document.getElementById(`view-${view}`);
+            if(target) target.classList.remove('hidden');
+            
+            // Load data based on view
+            if(view === 'dashboard') loadDashboard();
+            if(view === 'os') loadOS();
+            if(view === 'chat') loadChat();
+            if(view === 'usuarios') loadUsers();
+            if(view === 'clientes') loadClientes();
+            if(view === 'estoque') loadEstoque();
+            if(view === 'calculadora') {
+                // Reset calculator
+                document.getElementById('calc-resultado').classList.add('hidden');
+                // Set default values
+                document.getElementById('calc-qtd-total').value = '1000';
+                document.getElementById('calc-embalagem').value = 'unitario';
+                document.getElementById('calc-tamanho').value = 'M';
+                document.getElementById('calc-gramatura').value = '10';
+            }
+        }
+
+        function logout() {
+            google.accounts.oauth2.revoke(gapi.client.getToken().access_token);
+            currentUser = null;
+            document.getElementById('app-container').classList.add('hidden');
+            document.getElementById('login-screen').classList.remove('hidden');
+        }
+
+        // --- Carregadores de Visualizações ---
+
+        async function loadDashboard() {
+            // Estatísticas simples
+            const osData = await fetchSheetData('OS');
+            const prodData = await fetchSheetData('Produção');
+            const clientesData = await fetchSheetData('Clientes');
+            
+            document.getElementById('stat-os').innerText = osData.length;
+            document.getElementById('stat-prod').innerText = prodData.length;
+            document.getElementById('stat-clientes').innerText = clientesData.length;
+            
+            // Contar OS pendentes
+            const osPendentes = osData.filter(row => row[4] === 'Pendente' || !row[4]);
+            document.getElementById('stat-pendentes').innerText = osPendentes.length;
+            
+            // Carregar OS pendentes na tabela
+            const tbody = document.getElementById('os-pendentes-body');
+            tbody.innerHTML = '';
+            const osPendentesExibir = osPendentes.slice(0, 5);
+            
+            osPendentesExibir.forEach(row => {
+                tbody.innerHTML += `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-2">${row[0] || ''}</td>
+                        <td class="p-2">${row[1] || ''}</td>
+                        <td class="p-2">${row[2] || ''}</td>
+                        <td class="p-2">${row[3] || ''}</td>
+                        <td class="p-2">
+                            <span class="px-2 py-1 rounded text-xs bg-yellow-100 text-yellow-800">Pendente</span>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function loadOS() {
+            const data = await fetchSheetData('OS');
+            const tbody = document.getElementById('os-table-body');
+            tbody.innerHTML = '';
+            data.forEach((row, index) => {
+                // Colunas: ID, Cliente, Produto, Qtd, Status, Data
+                const status = row[4] || 'Pendente';
+                const statusClass = status === 'Concluído' ? 'bg-green-100 text-green-800' : 
+                                  status === 'Em Produção' ? 'bg-blue-100 text-blue-800' : 
+                                  status === 'Corte' ? 'bg-purple-100 text-purple-800' : 
+                                  'bg-yellow-100 text-yellow-800';
                 
-                <!-- Production Steps -->
-                <div class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 border border-purple-200 card-hover">
-                    <h3 class="text-purple-700 font-semibold text-xl mb-4 pb-2 border-b border-purple-300">
-                        <i class="fas fa-cogs text-purple-600"></i> Etapas de Produção
-                    </h3>
-                    
-                    <div class="space-y-3">
-                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                            <p class="font-semibold text-purple-700 text-sm">1. Corte <i class="fas fa-cut ml-2"></i></p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <div class="flex-1 bg-purple-200 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-purple-500 to-purple-700 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                                <span class="text-xs font-semibold text-purple-700">85%</span>
+                tbody.innerHTML += `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-2 font-mono">${row[0] || ''}</td>
+                        <td class="p-2">${row[1] || ''}</td>
+                        <td class="p-2">${row[2] || ''}</td>
+                        <td class="p-2 text-center">${row[3] || ''}</td>
+                        <td class="p-2">
+                            <span class="px-2 py-1 rounded text-xs ${statusClass}">${status}</span>
+                        </td>
+                        <td class="p-2">${row[5] || ''}</td>
+                        <td class="p-2">
+                            <div class="flex space-x-2">
+                                <button onclick="printLabel('${row[0]}')" class="text-blue-600 hover:text-blue-800" title="Imprimir Etiqueta"><i class="fas fa-print"></i></button>
+                                <button onclick="updateOSStatus('${row[0]}', 'Corte')" class="text-purple-600 hover:text-purple-800" title="Enviar para Corte"><i class="fas fa-cut"></i></button>
+                                <button onclick="updateOSStatus('${row[0]}', 'Em Produção')" class="text-blue-600 hover:text-blue-800" title="Enviar para Produção"><i class="fas fa-industry"></i></button>
+                                <button onclick="updateOSStatus('${row[0]}', 'Concluído')" class="text-green-600 hover:text-green-800" title="Marcar como Concluído"><i class="fas fa-check"></i></button>
                             </div>
-                        </div>
-                        
-                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                            <p class="font-semibold text-purple-700 text-sm">2. Costura <i class="fas fa-thread ml-2"></i></p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <div class="flex-1 bg-purple-200 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-purple-500 to-purple-700 h-2 rounded-full" style="width: 60%"></div>
-                                </div>
-                                <span class="text-xs font-semibold text-purple-700">60%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                            <p class="font-semibold text-purple-700 text-sm">3. Embalagem <i class="fas fa-box ml-2"></i></p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <div class="flex-1 bg-purple-200 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-purple-500 to-purple-700 h-2 rounded-full" style="width: 45%"></div>
-                                </div>
-                                <span class="text-xs font-semibold text-purple-700">45%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                            <p class="font-semibold text-purple-700 text-sm">4. Entrega <i class="fas fa-truck-fast ml-2"></i></p>
-                            <div class="flex items-center gap-2 mt-1">
-                                <div class="flex-1 bg-purple-200 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-purple-500 to-purple-700 h-2 rounded-full" style="width: 30%"></div>
-                                </div>
-                                <span class="text-xs font-semibold text-purple-700">30%</span>
-                            </div>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function loadChat() {
+            // Chat simulado para protótipo
+            const chatBox = document.getElementById('chat-messages');
+            const hoje = new Date().toLocaleDateString('pt-BR');
+            chatBox.innerHTML = `
+                <div class="chat-bubble received p-3 mb-2">
+                    <div class="text-xs text-gray-500">Sistema - ${hoje}</div>
+                    Bem-vindo ao sistema de comunicação interna da MedSuCare. Você está logado como <strong>${currentUser.name}</strong> (${userRole}).
                 </div>
-                
-                <!-- Quick Actions -->
-                <div class="bg-gradient-to-br from-yellow-50 to-white rounded-2xl p-6 border border-yellow-200 card-hover">
-                    <h3 class="text-yellow-700 font-semibold text-xl mb-4 pb-2 border-b border-yellow-300">
-                        <i class="fas fa-bolt text-yellow-600"></i> Ações Rápidas
-                    </h3>
-                    
-                    <div class="grid grid-cols-2 gap-3">
-                        <button id="btnNovaOS" class="btn-gradient text-white py-3 px-4 rounded-xl font-semibold flex flex-col items-center gap-1">
-                            <i class="fas fa-file-circle-plus text-xl"></i>
-                            <span class="text-sm">Nova OS</span>
-                        </button>
-                        
-                        <button id="btnEstoque" class="btn-primary text-white py-3 px-4 rounded-xl font-semibold flex flex-col items-center gap-1">
-                            <i class="fas fa-barcode text-xl"></i>
-                            <span class="text-sm">Estoque</span>
-                        </button>
-                        
-                        <button id="btnRelatorio" class="btn-warning text-white py-3 px-4 rounded-xl font-semibold flex flex-col items-center gap-1">
-                            <i class="fas fa-file-chart-line text-xl"></i>
-                            <span class="text-sm">Relatório</span>
-                        </button>
-                        
-                        <button id="btnSincronizar" class="sync-btn text-white py-3 px-4 rounded-xl font-semibold flex flex-col items-center gap-1">
-                            <i class="fas fa-sync-alt text-xl"></i>
-                            <span class="text-sm">Sync</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Google Sheets Status -->
-                    <div class="mt-4 p-3 bg-green-50 rounded-xl border border-green-200">
-                        <h4 class="text-green-700 font-semibold text-sm mb-2 flex items-center gap-2">
-                            <i class="fas fa-database"></i> Google Sheets
-                        </h4>
-                        <p class="text-sm text-green-800">
-                            Planilha: <span class="font-semibold">gestao medsucare</span><br>
-                            Status: <span class="text-green-600"><i class="fas fa-check-circle"></i> Conectado</span>
-                        </p>
-                    </div>
+                <div class="chat-bubble received p-3 mb-2">
+                    <div class="text-xs text-gray-500">Administrador - ${hoje}</div>
+                    Lembrem-se: Todas as OS devem ser registradas no sistema para controle de produção.
                 </div>
+                <div class="chat-bubble received p-3 mb-2">
+                    <div class="text-xs text-gray-500">Chefe de Produção - ${hoje}</div>
+                    OS com status "Corte" devem ser processadas em até 24 horas. Favor manter o cronograma.
+                </div>
+                <div class="chat-bubble received p-3 mb-2">
+                    <div class="text-xs text-gray-500">Comprador - ${hoje}</div>
+                    Novo lote de TNT chega amanhã às 10h. Favor preparar área de recebimento.
+                </div>
+                <div class="chat-bubble received p-3 mb-2">
+                    <div class="text-xs text-gray-500">Vendedor - ${hoje}</div>
+                    Novo cliente hospitalar cadastrado: Hospital São Lucas. OS será criada em breve.
+                </div>
+            `;
+            // Scroll to bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function loadUsers() {
+            const data = await fetchSheetData('Usuários');
+            const tbody = document.getElementById('users-table-body');
+            tbody.innerHTML = '';
+            data.forEach(row => {
+                tbody.innerHTML += `
+                    <tr class="border-b">
+                        <td class="p-2">${row[0]}</td>
+                        <td class="p-2">${row[1]}</td>
+                        <td class="p-2">${row[2]}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function loadClientes() {
+            const data = await fetchSheetData('Clientes');
+            const tbody = document.getElementById('clientes-table-body');
+            tbody.innerHTML = '';
+            data.forEach(row => {
+                tbody.innerHTML += `
+                    <tr class="border-b">
+                        <td class="p-2">${row[0] || ''}</td>
+                        <td class="p-2">${row[1] || ''}</td>
+                        <td class="p-2">${row[2] || ''}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function loadEstoque() {
+            const data = await fetchSheetData('Estoque');
+            const tbody = document.getElementById('estoque-table-body');
+            tbody.innerHTML = '';
+            data.forEach(row => {
+                tbody.innerHTML += `
+                    <tr class="border-b">
+                        <td class="p-2">${row[0] || ''}</td>
+                        <td class="p-2">${row[1] || ''}</td>
+                        <td class="p-2">${row[2] || ''}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // --- Ações ---
+
+        function createOS() {
+            const now = new Date();
+            const osId = `${String(now.getDate()).padStart(2,'0')}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getFullYear()).slice(-2)}${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+            
+            const cliente = document.getElementById('os-cliente').value;
+            const produto = document.getElementById('os-produto').value;
+            const qtd = document.getElementById('os-qtd').value;
+            const composicao = document.getElementById('os-composicao').value;
+            const tamanho = document.getElementById('os-tamanho').value;
+            const esterelidade = document.getElementById('os-esterelidade').value;
+            const embalagem = document.getElementById('os-embalagem').value;
+
+            appendSheetData('OS', [osId, cliente, produto, qtd, 'Pendente', new Date().toLocaleString(), composicao, tamanho, esterelidade, embalagem]);
+            alert(`Ordem de Serviço ${osId} criada com sucesso!`);
+            loadOS();
+        }
+
+        async function updateOSStatus(osId, newStatus) {
+            const data = await fetchSheetData('OS');
+            const rowIndex = data.findIndex(row => row[0] === osId);
+            
+            if (rowIndex !== -1) {
+                await updateSheetData('OS', rowIndex + 1, 4, newStatus);
+                alert(`OS ${osId} atualizada para: ${newStatus}`);
+                loadOS();
+            }
+        }
+
+        function printLabel(osId) {
+            const printArea = document.getElementById('print-area');
+            printArea.innerHTML = '';
+            
+            // Perguntar qual tipo de etiqueta imprimir
+            const tipoEtiqueta = prompt('Qual tipo de etiqueta deseja imprimir?\n1. Para pacotes unitários (12 por folha)\n2. Para fardos/caixas (4 por folha)');
+            
+            if (tipoEtiqueta === '2') {
+                // Etiquetas para fardos/caixas (4 por folha A4)
+                for(let i=0; i<4; i++) {
+                    const label = document.createElement('div');
+                    label.className = 'label-fardo';
+                    label.innerHTML = `
+                        <div class="label-content-fardo">
+                            <div class="label-header-fardo">
+                                <img src="${CONFIG.LOGO_URL}" class="label-logo-fardo">
+                                <span class="label-title-fardo">FARDO DE AVENTAIS HOSPITALARES</span>
+                            </div>
+                            <div class="label-body-fardo">
+                                <div><strong>OS:</strong> ${osId}</div>
+                                <div><strong>Conteúdo:</strong> Aventais Hospitalares</div>
+                                <div><strong>Quantidade:</strong> 1 Fardo</div>
+                                <div><strong>Peso Aprox.:</strong> 15-20 kg</div>
+                                <div><strong>Dimensões:</strong> 40x60x80 cm</div>
+                                <div><strong>Lote:</strong> ${new Date().getFullYear()}</div>
+                            </div>
+                            <div class="label-footer-fardo">MedSuCare EPI - Transportar com cuidado</div>
+                        </div>
+                    `;
+                    printArea.appendChild(label);
+                }
+            } else {
+                // Etiquetas para pacotes unitários (12 por folha A4)
+                for(let i=0; i<12; i++) {
+                    const label = document.createElement('div');
+                    label.className = 'label-unit';
+                    label.innerHTML = `
+                        <div class="label-content">
+                            <div class="label-header">
+                                <img src="${CONFIG.LOGO_URL}" class="label-logo">
+                                <span class="label-title">AVENTAL HOSPITALAR</span>
+                            </div>
+                            <div class="label-body">
+                                <div>OS: ${osId}</div>
+                                <div>Qtd: UN</div>
+                                <div>Lote: ${new Date().getFullYear()}</div>
+                            </div>
+                            <div class="label-footer">MedSuCare EPI</div>
+                        </div>
+                    `;
+                    printArea.appendChild(label);
+                }
+            }
+            
+            window.print();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value;
+            if(!msg) return;
+
+            const chatBox = document.getElementById('chat-messages');
+            chatBox.innerHTML += `
+                <div class="chat-bubble sent p-3 mb-2">
+                    <div class="text-xs text-right opacity-70">${currentUser.name}</div>
+                    ${msg}
+                </div>
+            `;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // --- Calculadora de Fardos ---
+        function calcularFardos() {
+            const qtdTotal = parseInt(document.getElementById('calc-qtd-total').value) || 0;
+            const embalagem = document.getElementById('calc-embalagem').value;
+            const tamanho = document.getElementById('calc-tamanho').value;
+            const gramatura = parseInt(document.getElementById('calc-gramatura').value) || 10;
+            
+            // Definir unidades por fardo baseado no tipo de embalagem
+            let unidadesPorFardo = 1;
+            switch(embalagem) {
+                case 'unitario': unidadesPorFardo = 1; break;
+                case 'pacote5': unidadesPorFardo = 5; break;
+                case 'pacote10': unidadesPorFardo = 10; break;
+                case 'grau-cirurgico': unidadesPorFardo = 20; break; // Pacote cirúrgico geralmente tem mais unidades
+            }
+            
+            // Calcular total de fardos
+            const totalFardos = Math.ceil(qtdTotal / unidadesPorFardo);
+            
+            // Calcular peso aproximado baseado no tamanho e gramatura
+            let areaPorAvental = 0;
+            switch(tamanho) {
+                case 'P': areaPorAvental = 1.0; break; // 1.0 m²
+                case 'M': areaPorAvental = 1.2; break; // 1.2 m²
+                case 'G': areaPorAvental = 1.4; break; // 1.4 m²
+                case 'GG': areaPorAvental = 1.6; break; // 1.6 m²
+                default: areaPorAvental = 1.2; break;
+            }
+            
+            // Peso por avental em gramas
+            const pesoPorAventalGramas = areaPorAvental * gramatura;
+            
+            // Peso por fardo em kg
+            const pesoPorFardoKg = (pesoPorAventalGramas * unidadesPorFardo) / 1000;
+            
+            // Peso total em kg
+            const pesoTotalKg = (pesoPorAventalGramas * qtdTotal) / 1000;
+            
+            // Volume aproximado por fardo (em m³)
+            const volumePorFardo = 0.02; // Aproximadamente 20 litros por fardo
+            
+            // Capacidade de caminhão pequeno (3m³)
+            const capacidadeCaminhao = Math.floor(3 / volumePorFardo);
+            
+            // Atualizar resultados
+            document.getElementById('result-qtd-total').textContent = qtdTotal.toLocaleString('pt-BR');
+            document.getElementById('result-unidades-fardo').textContent = unidadesPorFardo;
+            document.getElementById('result-total-fardos').textContent = totalFardos.toLocaleString('pt-BR');
+            document.getElementById('result-peso-fardo').textContent = pesoPorFardoKg.toFixed(2) + ' kg';
+            document.getElementById('result-peso-total').textContent = pesoTotalKg.toFixed(2) + ' kg';
+            document.getElementById('result-volume-fardo').textContent = volumePorFardo.toFixed(3);
+            document.getElementById('result-capacidade-caminhao').textContent = capacidadeCaminhao;
+            
+            // Mostrar resultados
+            document.getElementById('calc-resultado').classList.remove('hidden');
+        }
+
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+
+    <!-- Tela de Login -->
+    <div id="login-screen" class="flex-1 flex items-center justify-center bg-gray-50 p-4">
+        <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+            <img src="https://drive.google.com/uc?export=view&id=1V_lVXX9-MBvnMcK6AORy-dqbMbdBheFi" alt="Logo MedSuCare" class="h-24 mx-auto mb-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Gestão MedSuCare</h1>
+            <p class="text-gray-600 mb-8">Sistema Integrado de Gestão de Produção de EPIs Hospitalares</p>
+            
+            <button id="login-btn" disabled onclick="window.tokenClient.requestAccessToken()" class="w-full bg-[#20637D] hover:bg-[#1a4f63] text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
+                <i class="fab fa-google mr-2"></i> Entrar com Google
+            </button>
+            <p class="text-xs text-gray-400 mt-4">Acesso restrito a colaboradores autorizados da MedSuCare.</p>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="hidden flex-1 flex h-full">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-[#20637D] flex flex-col hidden md:flex">
+            <!-- Content rendered by JS -->
+        </aside>
+
+        <!-- Mobile Header -->
+        <div class="md:hidden bg-[#20637D] text-white p-4 flex justify-between items-center no-print">
+            <div class="flex items-center">
+                <img src="https://drive.google.com/uc?export=view&id=1V_lVXX9-MBvnMcK6AORy-dqbMbdBheFi" class="h-8 mr-2">
+                <span class="font-bold">MedSuCare</span>
             </div>
-        </section>
-        
-        <!-- ORDENS DE SERVIÇO -->
-        <section id="os" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-file-invoice-dollar text-cyan-600"></i>
-                    Ordens de Serviço (OS)
-                </h2>
-                
-                <!-- Filters -->
-                <div class="flex flex-wrap gap-4 mb-6 bg-white p-4 rounded-2xl border border-slate-200">
-                    <input type="text" id="searchOS" placeholder="🔍 Buscar OS por número ou cliente" 
-                           class="flex-1 min-w-[250px] px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
-                    <select id="filterOSStatus" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
-                        <option value="">Todos os Status</option>
-                        <option value="Orçamento">Orçamento</option>
-                        <option value="Pedido">Pedido</option>
-                        <option value="Produção">Produção</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                    <button id="btnNovaOS2" class="btn-gradient text-white px-8 py-3 rounded-xl font-semibold shadow-lg">
-                        <i class="fas fa-plus-circle mr-2"></i> Nova OS
-                    </button>
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#20637D] text-white absolute w-full z-50 no-print">
+            <div class="p-4 border-b border-blue-800 flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://drive.google.com/uc?export=view&id=1V_lVXX9-MBvnMcK6AORy-dqbMbdBheFi" class="h-8 mr-2">
+                    <span class="font-bold">MedSuCare</span>
                 </div>
-                
-                <!-- OS Table -->
-                <div class="bg-white rounded-2xl border border-slate-300 overflow-hidden">
-                    <table class="w-full">
-                        <thead class="bg-gradient-to-r from-cyan-600 to-blue-700 text-white">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-hashtag mr-2"></i> OS
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-building mr-2"></i> Cliente
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-clipboard-list mr-2"></i> Produto
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-layer-group mr-2"></i> Status
-                                </th>
-                                <th class="px-6 py-4 text-right text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-dollar-sign mr-2"></i> Valor
-                                </th>
-                                <th class="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wider">
-                                    <i class="fas fa-ellipsis-h mr-2"></i> Ações
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="osTableBody" class="divide-y divide-slate-200">
-                            <tr class="hover:bg-gradient-to-r from-cyan-50 to-blue-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">
-                                    <i class="fas fa-file-invoice text-cyan-600 mr-2"></i>OS-10245
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-slate-700">Hospital São Lucas</div>
-                                    <div class="text-xs text-slate-500">Av. das Nações Unidas, 12345</div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-700">Avental Cirúrgico SMS</td>
-                                <td class="px-6 py-4">
-                                    <span class="pill-success px-4 py-1 rounded-full text-xs font-semibold">
-                                        <i class="fas fa-check-circle mr-1"></i> Entregue
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right font-semibold text-slate-700">R$ 5,800.00</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex gap-2 justify-center">
-                                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-pen-to-square"></i> Editar
-                                        </button>
-                                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gradient-to-r from-cyan-50 to-blue-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">
-                                    <i class="fas fa-file-invoice text-cyan-600 mr-2"></i>OS-10246
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-slate-700">Clínica Vida Verde</div>
-                                    <div class="text-xs text-slate-500">Rua das Orquídeas, 567</div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-700">Capote Hospitalar TNT</td>
-                                <td class="px-6 py-4">
-                                    <span class="pill-warning px-4 py-1 rounded-full text-xs font-semibold">
-                                        <i class="fas fa-hourglass-half mr-1"></i> Produção
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right font-semibold text-slate-700">R$ 2,350.00</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex gap-2 justify-center">
-                                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-pen-to-square"></i> Editar
-                                        </button>
-                                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gradient-to-r from-cyan-50 to-blue-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">
-                                    <i class="fas fa-file-invoice text-cyan-600 mr-2"></i>OS-10247
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-slate-700">Hospital Regional</div>
-                                    <div class="text-xs text-slate-500">Praça da Liberdade, 89</div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-700">Kit Aventais Descartáveis</td>
-                                <td class="px-6 py-4">
-                                    <span class="pill-info px-4 py-1 rounded-full text-xs font-semibold">
-                                        <i class="fas fa-truck-fast mr-1"></i> Entrega
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right font-semibold text-slate-700">R$ 8,450.00</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex gap-2 justify-center">
-                                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-pen-to-square"></i> Editar
-                                        </button>
-                                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm flex items-center gap-1">
-                                            <i class="fas fa-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
             </div>
-        </section>
-        
-        <!-- CLIENTES -->
-        <section id="clientes" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-users text-emerald-600"></i>
-                    Clientes
-                </h2>
-                
-                <div class="flex flex-wrap gap-4 mb-6 bg-white p-4 rounded-2xl border border-slate-200">
-                    <input type="text" id="searchClientes" placeholder="🔍 Buscar clientes por nome ou CNPJ" 
-                           class="flex-1 min-w-[250px] px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                    <select id="filterClientesStatus" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                        <option value="">Todos</option>
-                        <option value="Ativo">Ativo</option>
-                        <option value="Inativo">Inativo</option>
-                    </select>
-                    <button id="btnNovoCliente" class="btn-gradient text-white px-8 py-3 rounded-xl font-semibold shadow-lg">
-                        <i class="fas fa-user-plus mr-2"></i> Novo Cliente
-                    </button>
-                </div>
-                
-                <div class="bg-white rounded-2xl border border-slate-300 overflow-hidden">
-                    <table class="w-full">
-                        <thead class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-hashtag mr-2"></i> Código
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-building mr-2"></i> Cliente
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-phone mr-2"></i> Telefone
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-envelope mr-2"></i> E-mail
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-map-marker-alt mr-2"></i> Cidade
-                                </th>
-                                <th class="px-6 py-4 text-center text-sm font-semibold uppercase">
-                                    <i class="fas fa-ellipsis-h mr-2"></i> Ações
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="clientesTableBody" class="divide-y divide-slate-200">
-                            <tr class="hover:bg-gradient-to-r from-emerald-50 to-teal-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">C001</td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-slate-700">Hospital São Lucas</div>
-                                    <div class="text-xs text-slate-500">CNPJ: 12.345.678/0001-90</div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-700">(11) 3123-4567</td>
-                                <td class="px-6 py-4 text-slate-700">contato@hospitalsaolucas.com.br</td>
-                                <td class="px-6 py-4 text-slate-700">São Paulo</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex gap-2 justify-center">
-                                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-pen-to-square"></i>
-                                        </button>
-                                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gradient-to-r from-emerald-50 to-teal-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">C002</td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-slate-700">Clínica Vida Verde</div>
-                                    <div class="text-xs text-slate-500">CNPJ: 98.765.432/0001-10</div>
-                                </td>
-                                <td class="px-6 py-4 text-slate-700">(21) 2234-5678</td>
-                                <td class="px-6 py-4 text-slate-700">vidaverde@clinica.com.br</td>
-                                <td class="px-6 py-4 text-slate-700">Rio de Janeiro</td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="flex gap-2 justify-center">
-                                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-pen-to-square"></i>
-                                        </button>
-                                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        
-        <!-- PRODUTOS -->
-        <section id="produtos" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-boxes text-orange-600"></i>
-                    Catálogo de Produtos
-                </h2>
-                
-                <div class="flex flex-wrap gap-4 mb-6 bg-white p-4 rounded-2xl border border-slate-200">
-                    <input type="text" id="searchProdutos" placeholder="🔍 Buscar produtos por nome, código ou composição" 
-                           class="flex-1 min-w-[250px] px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent">
-                    <select id="filterProdutosTipo" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent">
-                        <option value="">Todos os Tipos</option>
-                        <option value="Aventais">Aventais</option>
-                        <option value="Capotes">Capotes</option>
-                        <option value="Kit">Kits</option>
-                        <option value="Descartáveis">Descartáveis</option>
-                    </select>
-                    <button id="btnNovoProduto" class="btn-gradient text-white px-8 py-3 rounded-xl font-semibold shadow-lg">
-                        <i class="fas fa-boxes-stacked mr-2"></i> Novo Produto
-                    </button>
-                </div>
-                
-                <!-- Product Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="produtosGrid">
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-hands-bubbles text-blue-600"></i>
-                            Avental Cirúrgico SMS
-                        </h3>
-                        
-                        <p class="text-slate-600 text-sm mb-4">
-                            <i class="fas fa-receipt mr-2"></i><strong>Código:</strong> AV-SMS-001
-                        </p>
-                        
-                        <p class="text-slate-700 text-sm mb-2">
-                            <i class="fas fa-tint mr-2"></i> <strong>Composição:</strong> SMS (Spunbond - Meltblown - Spunbond)
-                        </p>
-                        <p class="text-slate-700 text-sm mb-2">
-                            <i class="fas fa-fire-flame-curved mr-2"></i><strong>Gramatura:</strong> 40g/m²
-                        </p>
-                        <p class="text-slate-700 text-sm mb-3">
-                            <i class="fas fa-temperature-full mr-2"></i><strong>Esterilização:</strong> Gamma
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="pill-info px-3 py-1 rounded-full text-xs font-semibold">
-                                <i class="fas fa-layer-group mr-1"></i> Cirúrgico
-                            </span>
-                            <span class="pill-warning px-3 py-1 rounded-full text-xs font-semibold">
-                                <i class="fas fa-biohazard mr-1"></i> Descartável
-                            </span>
-                        </div>
-                        
-                        <p class="text-2xl font-extrabold text-emerald-700 mb-3">
-                            <i class="fas fa-dollar-sign mr-1"></i>R$ 5.80
-                        </p>
-                        
-                        <p class="text-sm text-slate-500 mb-4">
-                            <i class="fas fa-box-open mr-2"></i><strong>Embalagem:</strong> 10 unidades/caixa
-                        </p>
-                        
-                        <div class="flex gap-2">
-                            <button class="btn-primary flex-1 text-white px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-shopping-cart mr-2"></i> Comprar
-                            </button>
-                            <button class="btn-outline flex-1 px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-eye mr-2"></i> Ver
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6 border border-pink-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-tshirt text-pink-600"></i>
-                            Capote Hospitalar TNT
-                        </h3>
-                        
-                        <p class="text-slate-600 text-sm mb-4">
-                            <i class="fas fa-receipt mr-2"></i><strong>Código:</strong> CP-TNT-002
-                        </p>
-                        
-                        <p class="text-slate-700 text-sm mb-2">
-                            <i class="fas fa-box-tissue mr-2"></i><strong>Composição:</strong> 100% Polipropileno (TNT)
-                        </p>
-                        <p class="text-slate-700 text-sm mb-2">
-                            <i class="fas fa-fire-flame-curved mr-2"></i><strong>Gramatura:</strong> 30g/m²
-                        </p>
-                        <p class="text-slate-700 text-sm mb-3">
-                            <i class="fas fa-temperature-quarter mr-2"></i><strong>Esterilização:</strong> Não
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="pill-info px-3 py-1 rounded-full text-xs font-semibold">
-                                <i class="fas fa-heartbeat mr-1"></i> Uso Geral
-                            </span>
-                            <span class="pill-success px-3 py-1 rounded-full text-xs font-semibold">
-                                <i class="fas fa-recycle mr-1"></i> Reutilizável
-                            </span>
-                        </div>
-                        
-                        <p class="text-2xl font-extrabold text-orange-700 mb-3">
-                            <i class="fas fa-dollar-sign mr-1"></i>R$ 3.50
-                        </p>
-                        
-                        <p class="text-sm text-slate-500 mb-4">
-                            <i class="fas fa-box-open mr-2"></i><strong>Embalagem:</strong> 20 unidades/caixa
-                        </p>
-                        
-                        <div class="flex gap-2">
-                            <button class="btn-primary flex-1 text-white px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-shopping-cart mr-2"></i> Comprar
-                            </button>
-                            <button class="btn-outline flex-1 px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-eye mr-2"></i> Ver
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- PRODUÇÃO -->
-        <section id="producao" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-industry text-amber-600"></i>
-                    Controle de Produção
-                </h2>
-                
-                <!-- Production Summary Cards -->
+             <!-- Mobile links injected by JS -->
+        </div>
+
+        <!-- Content Area -->
+        <main class="flex-1 flex flex-col h-full overflow-hidden bg-gray-100">
+            
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="view-section flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border border-orange-200 card-hover">
-                        <h4 class="text-orange-700 font-semibold text-lg mb-3 flex items-center gap-2">
-                            <i class="fas fa-cut text-orange-700"></i> Corte
-                        </h4>
-                        <p class="text-5xl font-extrabold text-orange-700 mb-2">158</p>
-                        <p class="text-orange-600 text-sm flex items-center gap-1">
-                            <i class="fas fa-arrow-down text-orange-700"></i> 12% vs ontem
-                        </p>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="text-gray-500 text-sm">Ordens de Serviço</div>
+                        <div class="text-3xl font-bold text-[#20637D]" id="stat-os">0</div>
+                        <div class="text-sm text-gray-400 mt-1">Total de OS</div>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-6 border border-teal-200 card-hover">
-                        <h4 class="text-teal-700 font-semibold text-lg mb-3 flex items-center gap-2">
-                            <i class="fas fa-thread text-teal-700"></i> Costura
-                        </h4>
-                        <p class="text-5xl font-extrabold text-teal-700 mb-2">134</p>
-                        <p class="text-teal-600 text-sm flex items-center gap-1">
-                            <i class="fas fa-arrow-up text-teal-700"></i> 8% vs ontem
-                        </p>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="text-gray-500 text-sm">Produção Ativa</div>
+                        <div class="text-3xl font-bold text-[#20637D]" id="stat-prod">0</div>
+                        <div class="text-sm text-gray-400 mt-1">Em andamento</div>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-200 card-hover">
-                        <h4 class="text-purple-700 font-semibold text-lg mb-3 flex items-center gap-2">
-                            <i class="fas fa-boxes-stacked text-purple-700"></i> Embalagem
-                        </h4>
-                        <p class="text-5xl font-extrabold text-purple-700 mb-2">98</p>
-                        <p class="text-purple-600 text-sm flex items-center gap-1">
-                            <i class="fas fa-minus text-purple-700"></i> 2% vs ontem
-                        </p>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="text-gray-500 text-sm">Clientes Ativos</div>
+                        <div class="text-3xl font-bold text-[#20637D]" id="stat-clientes">0</div>
+                        <div class="text-sm text-gray-400 mt-1">Cadastrados</div>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 border border-red-200 card-hover">
-                        <h4 class="text-red-700 font-semibold text-lg mb-3 flex items-center gap-2">
-                            <i class="fas fa-shipping-fast text-red-700"></i> Entrega
-                        </h4>
-                        <p class="text-5xl font-extrabold text-red-700 mb-2">76</p>
-                        <p class="text-red-600 text-sm flex items-center gap-1">
-                            <i class="fas fa-arrow-up text-red-700"></i> 5% vs ontem
-                        </p>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <div class="text-gray-500 text-sm">OS Pendentes</div>
+                        <div class="text-3xl font-bold text-[#20637D]" id="stat-pendentes">0</div>
+                        <div class="text-sm text-gray-400 mt-1">Aguardando processamento</div>
                     </div>
                 </div>
-                
-                <!-- Production Table -->
-                <div class="bg-white rounded-2xl border border-slate-300 overflow-hidden">
-                    <table class="w-full">
-                        <thead class="bg-gradient-to-r from-amber-600 to-orange-700 text-white">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-hashtag mr-2"></i> OS
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-building mr-2"></i> Cliente
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-tshirt mr-2"></i> Produto
-                                </th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase">
-                                    <i class="fas fa-layer-group mr-2"></i> Etapa
-                                </th>
-                                <th class="px-6 py-4 text-right text-sm font-semibold uppercase">
-                                    <i class="fas fa-percent mr-2"></i> Progresso
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="producaoTableBody" class="divide-y divide-slate-200">
-                            <tr class="hover:bg-gradient-to-r from-amber-50 to-orange-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">OS-10245</td>
-                                <td class="px-6 py-4 text-slate-700">Hospital São Lucas</td>
-                                <td class="px-6 py-4 text-slate-700">Avental Cirúrgico SMS</td>
-                                <td class="px-6 py-4">
-                                    <span class="badge-green px-3 py-1 rounded-full text-xs font-semibold">
-                                        <i class="fas fa-box-check mr-1"></i> Embalagem
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center gap-2 justify-end">
-                                        <span class="font-semibold text-slate-700 text-sm">85%</span>
-                                        <i class="fas fa-circle-check text-green-600"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gradient-to-r from-amber-50 to-orange-50 transition-all">
-                                <td class="px-6 py-4 font-semibold text-slate-700">OS-10246</td>
-                                <td class="px-6 py-4 text-slate-700">Clínica Vida Verde</td>
-                                <td class="px-6 py-4 text-slate-700">Capote Hospitalar TNT</td>
-                                <td class="px-6 py-4">
-                                    <span class="badge-orange px-3 py-1 rounded-full text-xs font-semibold">
-                                        <i class="fas fa-scissors mr-1"></i> Corte
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="flex items-center gap-2 justify-end">
-                                        <span class="font-semibold text-slate-700 text-sm">45%</span>
-                                        <i class="fas fa-spinner fa-spin text-orange-500"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        
-        <!-- RELATÓRIOS -->
-        <section id="relatorios" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-file-chart-line text-slate-700"></i>
-                    Relatórios e Análises
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-chart-simple text-blue-600"></i>
-                            Vendas
-                        </h3>
-                        
-                        <p class="text-slate-600 text-sm mb-4">
-                            Relatório de faturamento, pedidos e clientes.
-                        </p>
-                        
-                        <p class="text-2xl font-extrabold text-emerald-700 mb-3">
-                            R$ 148,500.00
-                        </p>
-                        
-                        <p class="text-sm text-blue-700 mb-4">
-                            <i class="fas fa-arrow-trend-up mr-2"></i>
-                            <span class="font-semibold">+18% </span>vs mês anterior
-                        </p>
-                        
-                        <button id="btnRelatorioVendas" class="btn-primary text-white w-full py-3 rounded-xl font-semibold">
-                            <i class="fas fa-file-pdf mr-2"></i> Gerar PDF
-                        </button>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6 border border-green-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-warehouse text-teal-600"></i>
-                            Estoque
-                        </h3>
-                        
-                        <p class="text-slate-600 text-sm mb-4">
-                            Estoque atual, min/max e alertas de reposição.
-                        </p>
-                        
-                        <p class="text-2xl font-extrabold text-orange-700 mb-3">
-                            5,800 <span class="text-lg text-orange-700">unid.</span>
-                        </p>
-                        
-                        <p class="text-sm text-amber-700 mb-4">
-                            <i class="fas fa-bell-concierge mr-2"></i>
-                            12 produtos abaixo do mínimo
-                        </p>
-                        
-                        <button id="btnRelatorioEstoque" class="btn-gradient text-white w-full py-3 rounded-xl font-semibold">
-                            <i class="fas fa-file-excel mr-2"></i> Exportar Excel
-                        </button>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6 border border-pink-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-industry text-purple-600"></i>
-                            Produção
-                        </h3>
-                        
-                        <p class="text-slate-600 text-sm mb-4">
-                            Eficiência, produção diária e etapas concluídas.
-                        </p>
-                        
-                        <p class="text-2xl font-extrabold text-purple-700 mb-3">
-                            92% <span class="text-lg text-purple-700">eficiência</span>
-                        </p>
-                        
-                        <p class="text-sm text-purple-700 mb-4">
-                            <i class="fas fa-stopwatch mr-2"></i>
-                            Média de 2.5 horas por OS
-                        </p>
-                        
-                        <button id="btnRelatorioProducao" class="btn-warning text-white w-full py-3 rounded-xl font-semibold">
-                            <i class="fas fa-file-text mr-2"></i> Gerar Relatório
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-2xl border border-slate-300 p-6">
-                    <h3 class="text-xl font-semibold text-slate-700 mb-4 pb-2 border-b border-slate-300">
-                        <i class="fas fa-sliders text-yellow-500"></i> Filtros de Relatório
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <select id="periodoRelatorio" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-yellow-500">
-                            <option value="semana">Última Semana</option>
-                            <option value="mes">Último Mês</option>
-                            <option value="trimestre">Último Trimestre</option>
-                            <option value="ano">Último Ano</option>
-                        </select>
-                        
-                        <select id="tipoRelatorio" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-yellow-500">
-                            <option value="vendas">Vendas</option>
-                            <option value="producao">Produção</option>
-                            <option value="estoque">Estoque</option>
-                        </select>
-                        
-                        <select id="formatoRelatorio" class="px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-yellow-500">
-                            <option value="pdf">PDF</option>
-                            <option value="excel">Excel/CSV</option>
-                        </select>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button id="btnGerarRelatorio" class="btn-gradient text-white px-10 py-4 rounded-2xl font-semibold text-xl">
-                            <i class="fas fa-rocket mr-3"></i> Gerar Relatório
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- NOTIFICATIONS -->
-        <section id="notifications" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-bell text-yellow-500"></i>
-                    Notificações & Avisos
-                </h2>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="notificationsList">
-                    <div class="notification p-6 rounded-2xl border border-emerald-300 text-white">
-                        <h4 class="text-xl font-semibold mb-3 flex items-center gap-2">
-                            <i class="fas fa-check-circle text-yellow-300"></i> Produção Concluída!
-                        </h4>
-                        <p class="mb-4">OS-10245 (Hospital São Lucas) foi finalizada e está pronta para entrega.</p>
-                        <p class="text-emerald-100 text-sm">
-                            <i class="fas fa-clock mr-2"></i> Há 15 minutos
-                        </p>
-                    </div>
-                    
-                    <div class="notification-warning p-6 rounded-2xl border border-amber-300 text-white">
-                        <h4 class="text-xl font-semibold mb-3 flex items-center gap-2">
-                            <i class="fas fa-exclamation-triangle text-yellow-200"></i> Estoque Baixo!
-                        </h4>
-                        <p class="mb-4">Material SMS está abaixo do estoque mínimo (50 unidades restantes).</p>
-                        <p class="text-amber-100 text-sm">
-                            <i class="fas fa-clock mr-2"></i> Há 2 horas
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SYNC & CONFIGURATION -->
-        <section id="configuracao" class="mb-12">
-            <div class="bg-gradient-to-r from-slate-50 to-slate-100 rounded-3xl p-6 border border-slate-300 shadow-xl">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-                    <i class="fas fa-cog text-slate-700"></i>
-                    Sincronização & Configuração
-                </h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-2xl p-6 border border-cyan-300">
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <i class="fas fa-database text-cyan-600"></i> Google Sheets Sync
-                        </h3>
-                        
-                        <p class="text-slate-700 mb-4 text-sm leading-relaxed">
-                            Sincronize dados com o Google Drive. Planilha usada: <span class="font-semibold text-cyan-700">gestao medsucare</span>.
-                        </p>
-                        
-                        <div class="flex gap-4 mb-6">
-                            <button id="btnSyncNow" class="sync-btn text-white flex-1 px-4 py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
-                                <i class="fas fa-rotate-right fa-spin"></i> Sync Now
-                            </button>
-                            <button id="btnAutoSync" class="btn-outline flex-1 px-4 py-3 rounded-xl font-semibold">
-                                <i class="fas fa-gear"></i> Auto
-                            </button>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="font-bold text-lg mb-4">OS Pendentes</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="p-2 text-left">ID OS</th>
+                                        <th class="p-2 text-left">Cliente</th>
+                                        <th class="p-2 text-left">Produto</th>
+                                        <th class="p-2 text-left">Qtd</th>
+                                        <th class="p-2 text-left">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="os-pendentes-body">
+                                    <!-- Linhas carregadas por JS -->
+                                </tbody>
+                            </table>
                         </div>
-                        
-                        <div class="p-4 bg-white rounded-xl border border-slate-200 mb-4">
-                            <p class="text-sm text-slate-700 mb-2">
-                                <i class="fas fa-circle-check text-green-600 mr-2"></i>
-                                Última sincronização: <span class="font-semibold text-green-700" id="lastSyncTime">10/01/2025 14:30</span>
-                            </p>
-                            
-                            <p class="text-sm text-slate-700">
-                                <i class="fas fa-plug text-blue-600 mr-2"></i>
-                                Status conexão: <span class="font-semibold text-blue-700" id="connectionStatus">Conectado</span>
-                            </p>
+                        <div class="mt-4 text-center">
+                            <button onclick="navigateTo('os')" class="text-[#20637D] hover:text-[#1a4f63] text-sm font-medium">Ver todas as OS →</button>
                         </div>
                     </div>
                     
-                    <div class="bg-gradient-to-br from-slate-50 to-purple-50 rounded-2xl p-6 border border-purple-300">
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                            <i class="fas fa-download text-purple-700"></i> Backup & Restore
-                        </h3>
-                        
-                        <p class="text-slate-700 mb-4 text-sm">
-                            Gere backup do sistema e restaure dados anteriores.
-                        </p>
-                        
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="font-bold text-lg mb-4">Ações Rápidas</h3>
                         <div class="space-y-3">
-                            <button id="btnBackup" class="btn-primary text-white w-full py-3 rounded-xl font-semibold">
-                                <i class="fas fa-download mr-2"></i> Gerar Backup
+                            <button onclick="document.getElementById('modal-new-os').classList.remove('hidden')" class="w-full bg-[#20637D] text-white px-4 py-3 rounded hover:bg-[#1a4f63] flex items-center justify-center">
+                                <i class="fas fa-plus mr-2"></i> Nova Ordem de Serviço
                             </button>
-                            
-                            <button id="btnRestore" class="btn-warning text-white w-full py-3 rounded-xl font-semibold">
-                                <i class="fas fa-upload mr-2"></i> Restaurar Backup
+                            <button onclick="navigateTo('clientes')" class="w-full bg-white border border-gray-300 text-gray-700 px-4 py-3 rounded hover:bg-gray-50 flex items-center justify-center">
+                                <i class="fas fa-user-plus mr-2"></i> Cadastrar Cliente
                             </button>
-                            
-                            <button id="btnExportCSV" class="btn-outline w-full py-3 rounded-xl font-semibold">
-                                <i class="fas fa-file-excel mr-2"></i> Exportar CSV
+                            <button onclick="navigateTo('estoque')" class="w-full bg-white border border-gray-300 text-gray-700 px-4 py-3 rounded hover:bg-gray-50 flex items-center justify-center">
+                                <i class="fas fa-boxes mr-2"></i> Verificar Estoque
                             </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-2xl border border-slate-300 p-6">
-                    <h3 class="text-xl font-semibold text-slate-700 mb-4 pb-2 border-b border-slate-300">
-                        <i class="fab fa-creative-commons text-slate-700"></i> Informações do Sistema
-                    </h3>
-                    
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-                        <div class="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-emerald-200">
-                            <i class="fas fa-laptop-code text-4xl text-emerald-600 mb-2"></i>
-                            <p class="text-2xl font-bold text-slate-800" id="versaoSistema">1.0.0</p>
-                            <p class="text-sm text-slate-600 font-semibold">Versão</p>
-                        </div>
-                        
-                        <div class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                            <i class="fas fa-clock text-4xl text-blue-600 mb-2"></i>
-                            <p class="text-2xl font-bold text-slate-800" id="tempoOnline">24/7</p>
-                            <p class="text-sm text-slate-600 font-semibold">Disponibilidade</p>
-                        </div>
-                        
-                        <div class="p-4 bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl border border-orange-200">
-                            <i class="fas fa-database text-4xl text-orange-600 mb-2"></i>
-                            <p class="text-2xl font-bold text-slate-800" id="totalRegistros">15,840</p>
-                            <p class="text-sm text-slate-600 font-semibold">Registros</p>
-                        </div>
-                        
-                        <div class="p-4 bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl border border-pink-200">
-                            <i class="fas fa-user-friends text-4xl text-pink-700 mb-2"></i>
-                            <p class="text-2xl font-bold text-slate-800" id="totalUsuarios">12</p>
-                            <p class="text-sm text-slate-600 font-semibold">Usuários</p>
+                            <button onclick="navigateTo('calculadora')" class="w-full bg-white border border-gray-300 text-gray-700 px-4 py-3 rounded hover:bg-gray-50 flex items-center justify-center">
+                                <i class="fas fa-calculator mr-2"></i> Calcular Fardos
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- FOOTER -->
-        <footer class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white shadow-2xl">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center md:text-left">
-                        <h3 class="text-2xl font-extrabold mb-4 text-green-300">
-                            <i class="fas fa-hospital mr-2"></i> MedSuCare
-                        </h3>
-                        <p class="text-slate-400 mb-4 leading-relaxed">
-                            Soluções hospitalares de alta qualidade com foco na segurança e conforto dos profissionais da saúde.
-                        </p>
-                        <p class="text-slate-300 text-sm mb-4">
-                            <i class="fas fa-phone mr-2"></i> (11) 3000-0000
-                        </p>
-                        <p class="text-slate-300 text-sm">
-                            <i class="fas fa-envelope mr-2"></i> contato@medsucare.com.br
-                        </p>
-                    </div>
-                    
-                    <div class="text-center md:text-left">
-                        <h4 class="text-xl font-semibold mb-4 border-b border-slate-700 pb-2">
-                            <i class="fas fa-link mr-2 text-green-400"></i> Quick Links
-                        </h4>
-                        <ul class="space-y-2 text-slate-400">
-                            <li class="flex items-center gap-2">
-                                <i class="fas fa-chevron-right text-green-400"></i>
-                                <a href="#dashboard" class="hover:text-green-300 transition-all duration-300">Dashboard</a>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fas fa-chevron-right text-green-400"></i>
-                                <a href="#os" class="hover:text-green-300 transition-all duration-300">Ordens de Serviço</a>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fas fa-chevron-right text-green-400"></i>
-                                <a href="#produtos" class="hover:text-green-300 transition-all duration-300">Catálogo</a>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fas fa-chevron-right text-green-400"></i>
-                                <a href="#producao" class="hover:text-green-300 transition-all duration-300">Produção</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="text-center md:text-left">
-                        <h4 class="text-xl font-semibold mb-4 border-b border-slate-700 pb-2">
-                            <i class="fas fa-headset mr-2 text-green-400"></i> Support
-                        </h4>
-                        <p class="text-slate-400 mb-4">
-                            Entre em contato com nossa equipe de suporte técnico.
-                        </p>
-                        <p class="text-slate-300 text-sm mb-2">
-                            Horário: Seg-Sex, 8h - 18h
-                        </p>
-                        <p class="text-slate-300 text-sm">
-                            E-mail: <span class="font-semibold text-yellow-300">suporte@medsucare.com.br</span>
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="text-center border-t border-slate-700 pt-6 mt-8">
-                    <p class="text-slate-400 text-sm">
-                        &copy; <span id="anoAtual">2025</span> MedSuCare. Todos os direitos reservados.
-                    </p>
-                    <p class="text-slate-500 text-xs mt-2">
-                        Desenvolvido com ❤️ para a saúde e segurança dos profissionais.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </main>
-    
-    <!-- MODAL - NOVA OS -->
-    <div id="modalNovaOS" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto">
-            <div class="gradient-bg text-white p-6 rounded-t-3xl">
-                <h3 class="text-2xl font-extrabold flex items-center gap-3">
-                    <i class="fas fa-file-invoice-dollar text-yellow-300"></i> Nova Ordem de Serviço
-                </h3>
-            </div>
-            
-            <form id="formNovaOS" class="p-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <div class="lg:col-span-2">
-                        <label class="block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                            <i class="fas fa-building text-emerald-600"></i> Cliente
-                        </label>
-                        <select id="clienteOS" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                            <option value="1">Hospital São Lucas</option>
-                            <option value="2">Clínica Vida Verde</option>
-                        </select>
-                    </div>
-                    
-                    <div class="lg:col-span-1">
-                        <label class="block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                            <i class="fas fa-box-tissue text-blue-600"></i> Produto
-                        </label>
-                        <select id="produtoOS" class="w-full px-4 py-3 border border-slate-300 rounded-2xl focus:ring-2 focus:ring-blue-500">
-                            <option value="1">Avental Cirúrgico SMS</option>
-                            <option value="2">Capote Hospitalar TNT</option>
-                        </select>
-                    </div>
-                    
-                    <div class="lg:col-span-1">
-                        <label class="block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                            <i class="fas fa-layer-group text-purple-600"></i> Quantidade
-                        </label>
-                        <input type="number" id="quantidadeOS" value="100" 
-                               class="w-full px-4 py-3 border border-slate-300 rounded-2xl number-input input-focus">
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-3">
-                            <i class="fas fa-calendar-day text-amber-600 mr-2"></i> Data Entrega
-                        </label>
-                        <input type="date" id="dataEntregaOS" 
-                               class="w-full px-4 py-3 border border-slate-300 rounded-2xl input-focus">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-3">
-                            <i class="fas fa-money-bill-wave text-green-600 mr-2"></i> Valor Unitário
-                        </label>
-                        <input type="number" id="valorUnitarioOS" value="5.80" step="0.01" 
-                               class="w-full px-4 py-3 border border-slate-300 rounded-2xl input-focus">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-3">
-                            <i class="fas fa-cash-register text-blue-600 mr-2"></i> Valor Total
-                        </label>
-                        <input type="text" id="valorTotalOS" value="R$ 580.00" 
-                               class="w-full px-4 py-3 border border-slate-300 rounded-2xl bg-slate-50" readonly>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <button type="button" id="btnCancelOS" 
-                            class="btn-outline flex-1 px-8 py-3 rounded-2xl font-semibold">
-                        <i class="fas fa-xmark mr-2"></i> Cancelar
-                    </button>
-                    
-                    <button type="submit" 
-                            class="btn-gradient flex-1 px-8 py-3 rounded-2xl font-semibold text-white">
-                        <i class="fas fa-floppy-disk mr-2"></i> Salvar
+
+            <!-- OS View -->
+            <div id="view-os" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Ordens de Serviço</h2>
+                    <button onclick="document.getElementById('modal-new-os').classList.remove('hidden')" class="bg-[#20637D] text-white px-4 py-2 rounded hover:bg-[#1a4f63] flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Nova OS
                     </button>
                 </div>
-            </form>
+
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="p-4">ID OS</th>
+                                    <th class="p-4">Cliente</th>
+                                    <th class="p-4">Produto</th>
+                                    <th class="p-4">Qtd</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4">Data</th>
+                                    <th class="p-4">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="os-table-body">
+                                <!-- Linhas injetadas por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat View -->
+            <div id="view-chat" class="view-section hidden flex-1 flex flex-col h-full bg-white">
+                <div class="p-4 border-b bg-[#20637D] text-white font-bold flex justify-between items-center">
+                    <span>Comunicação Interna</span>
+                    <span class="text-sm font-normal">Equipe MedSuCare</span>
+                </div>
+                <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-gray-50 flex flex-col">
+                    <!-- Mensagens injetadas por JS -->
+                </div>
+                <div class="p-4 border-t bg-white flex">
+                    <input type="text" id="chat-input" placeholder="Digite sua mensagem para a equipe..." class="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none focus:border-[#20637D]" onkeypress="if(event.key==='Enter') sendChatMessage()">
+                    <button onclick="sendChatMessage()" class="bg-[#20637D] text-white px-4 py-2 rounded-r-lg hover:bg-[#1a4f63]">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Users View (Admin) -->
+            <div id="view-usuarios" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Gerenciamento de Usuários</h2>
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="p-4">E-mail</th>
+                                <th class="p-4">Nome</th>
+                                <th class="p-4">Função</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Clientes View -->
+            <div id="view-clientes" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Clientes</h2>
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="p-4">Nome</th>
+                                <th class="p-4">CNPJ</th>
+                                <th class="p-4">Contato</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Estoque View -->
+            <div id="view-estoque" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Estoque</h2>
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="p-4">Item</th>
+                                <th class="p-4">Tipo</th>
+                                <th class="p-4">Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="estoque-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Placeholder Views -->
+            <div id="view-fornecedores" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Fornecedores</h2>
+                <p class="text-gray-500">Módulo em desenvolvimento.</p>
+            </div>
+            <div id="view-producao" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Produção</h2>
+                <p class="text-gray-500">Módulo em desenvolvimento.</p>
+            </div>
+            <div id="view-financeiro" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Financeiro</h2>
+                <p class="text-gray-500">Módulo em desenvolvimento.</p>
+            </div>
+
+            <!-- Calculadora de Fardos -->
+            <div id="view-calculadora" class="view-section hidden flex-1 overflow-y-auto p-6">
+                <h2 class="text-2xl font-bold mb-6">Calculadora de Fardos</h2>
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h3 class="font-bold text-lg mb-4">Calcular Quantidade de Fardos</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Quantidade Total de Aventais</label>
+                            <input type="number" id="calc-qtd-total" class="w-full border rounded px-3 py-2" placeholder="Ex: 1000" value="1000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Embalagem</label>
+                            <select id="calc-embalagem" class="w-full border rounded px-3 py-2">
+                                <option value="unitario">Unitário</option>
+                                <option value="pacote5">Pacote com 5 unidades</option>
+                                <option value="pacote10">Pacote com 10 unidades</option>
+                                <option value="grau-cirurgico">Grau cirúrgico</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tamanho do Avental</label>
+                            <select id="calc-tamanho" class="w-full border rounded px-3 py-2">
+                                <option value="P">P (Pequeno)</option>
+                                <option value="M">M (Médio)</option>
+                                <option value="G">G (Grande)</option>
+                                <option value="GG">GG (Extra Grande)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gramatura (g/m²)</label>
+                            <select id="calc-gramatura" class="w-full border rounded px-3 py-2">
+                                <option value="10">10 g/m²</option>
+                                <option value="20">20 g/m²</option>
+                                <option value="30">30 g/m²</option>
+                                <option value="40">40 g/m²</option>
+                                <option value="55">55 g/m²</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="calcularFardos()" class="mt-6 bg-[#20637D] text-white px-6 py-3 rounded hover:bg-[#1a4f63] w-full md:w-auto">
+                        Calcular Fardos
+                    </button>
+                </div>
+                
+                <div id="calc-resultado" class="bg-white rounded-lg shadow p-6 hidden">
+                    <h3 class="font-bold text-lg mb-4">Resultado do Cálculo</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Quantidade Total:</span>
+                            <span class="font-bold" id="result-qtd-total">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Unidades por Fardo:</span>
+                            <span class="font-bold" id="result-unidades-fardo">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Total de Fardos:</span>
+                            <span class="font-bold text-[#20637D]" id="result-total-fardos">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Peso Aproximado por Fardo:</span>
+                            <span class="font-bold" id="result-peso-fardo">0 kg</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Peso Total Estimado:</span>
+                            <span class="font-bold" id="result-peso-total">0 kg</span>
+                        </div>
+                        <div class="mt-4 p-3 bg-blue-50 rounded border border-blue-200">
+                            <p class="text-sm text-blue-700">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                <strong>Recomendação:</strong> Para transporte, considere que cada fardo ocupa aproximadamente <span id="result-volume-fardo">0.02</span> m³. 
+                                Um caminhão pequeno (3m³) comporta cerca de <span id="result-capacidade-caminhao">150</span> fardos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modais -->
+    <div id="modal-new-os" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto">
+            <h3 class="text-xl font-bold mb-4">Criar Nova Ordem de Serviço</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Cliente *</label>
+                    <input type="text" id="os-cliente" class="w-full border rounded px-3 py-2 mt-1" placeholder="Nome do cliente ou digite livremente" required>
+                    <p class="text-xs text-gray-500 mt-1">Digite o nome do cliente ou selecione da lista existente</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Produto *</label>
+                    <select id="os-produto" class="w-full border rounded px-3 py-2 mt-1" required>
+                        <option value="">Selecione um produto</option>
+                        <option value="Avental Hospitalar">Avental Hospitalar</option>
+                        <option value="Capote">Capote</option>
+                        <option value="Avental Cirúrgico">Avental Cirúrgico</option>
+                        <option value="Avental Procedimentos">Avental para Procedimentos</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Quantidade *</label>
+                    <input type="number" id="os-qtd" class="w-full border rounded px-3 py-2 mt-1" placeholder="Quantidade" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Composição</label>
+                    <select id="os-composicao" class="w-full border rounded px-3 py-2 mt-1">
+                        <option value="TNT">TNT (Tecido Não Tecido)</option>
+                        <option value="100% Polipropileno">100% Polipropileno</option>
+                        <option value="SMMS">SMMS</option>
+                        <option value="SSMMSS">SSMMSS</option>
+                        <option value="SMS">SMS</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Tamanho</label>
+                    <select id="os-tamanho" class="w-full border rounded px-3 py-2 mt-1">
+                        <option value="P">P (Pequeno)</option>
+                        <option value="M">M (Médio)</option>
+                        <option value="G">G (Grande)</option>
+                        <option value="GG">GG (Extra Grande)</option>
+                        <option value="XG">XG (Extra Grande)</option>
+                        <option value="ÚNICO">ÚNICO</option>
+                        <option value="1,00 x 1,40m">1,00 x 1,40m</option>
+                        <option value="1,20 x 1,40m">1,20 x 1,40m</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Esterelidade</label>
+                    <select id="os-esterelidade" class="w-full border rounded px-3 py-2 mt-1">
+                        <option value="Não estéril">Não estéril</option>
+                        <option value="Estéril">Estéril</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Embalagem</label>
+                    <select id="os-embalagem" class="w-full border rounded px-3 py-2 mt-1">
+                        <option value="Unitário">Unitário</option>
+                        <option value="Pacote com 5 unidades">Pacote com 5 unidades</option>
+                        <option value="Pacote com 10 unidades">Pacote com 10 unidades</option>
+                        <option value="Grau cirúrgico">Grau cirúrgico</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end gap-2">
+                <button onclick="document.getElementById('modal-new-os').classList.add('hidden')" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">Cancelar</button>
+                <button onclick="createOS(); document.getElementById('modal-new-os').classList.add('hidden')" class="px-4 py-2 bg-[#20637D] text-white rounded hover:bg-[#1a4f63]">Criar OS</button>
+            </div>
         </div>
     </div>
-    
-    <!-- MODAL - NOVA PRODUTO -->
-    <div id="modalNovoProduto" class="fixed inset-0 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="bg-gradient-to-r from-pink-600 to-purple-700 p-6 text-white rounded-t-3xl">
-                <h3 class="text-2xl font-extrabold flex items-center gap-3">
-                    <i class="fas fa-boxes-stacked text-yellow-300"></i> Novo Produto
-                </h3>
-            </div>
-            
-            <form id="formNovoProduto" class="p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-2">Nome do Produto *</label>
-                        <input type="text" id="produtoNome" class="w-full px-4 py-3 border border-slate-300 rounded-xl input-focus">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-2">Código *</label>
-                        <input type="text" id="produtoCodigo" class="w-full px-4 py-3 border border-slate-300 rounded-xl input-focus">
-                    </div>
-                    
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-2">Composição</label>
-                        <select id="produtoComposicao" class="w-full px-4 py-3 border border-slate-300 rounded-xl">
-                            <option value="100% Polipropileno">100% Polipropileno (TNT)</option>
-                            <option value="SMS">SMS</option>
-                            <option value="SMMS">SMMS</option>
-                            <option value="SSMMSS">SSMMSS</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label class="block font-semibold text-slate-700 mb-2">Gramatura (g/m²)</label>
-                        <input type="number" id="produtoGramatura" value="40" 
-                               class="w-full px-4 py-3 border border-slate-300 rounded-xl input-focus">
-                    </div>
-                </div>
-                
-                <div class="flex gap-4 pt-4">
-                    <button type="button" id="btnCancelProduto" 
-                            class="btn-outline flex-1 px-8 py-3 rounded-2xl font-semibold">
-                        <i class="fas fa-xmark mr-2"></i> Cancelar
-                    </button>
-                    
-                    <button type="submit" 
-                            class="btn-gradient flex-1 px-8 py-3 rounded-2xl font-semibold text-white">
-                        <i class="fas fa-save mr-2"></i> Salvar Produto
-                    </button>
-                </div>
-            </form>
-        </div>
+
+    <!-- Print Area (Hidden) -->
+    <div id="print-area" class="hidden">
+        <!-- Labels generated by JS -->
     </div>
-    
-    <script>
-        // Google Sheets API Credentials (from your setup)
-        const CLIENT_ID = '1068094715814-1l921uhaue0h7k9bv0i4qhav9ima23fu.apps.googleusercontent.com';
-        const SPREADSHEET_ID = '1IJHX7IDnHhxa3_TxBBBjQxlomhH594Q6HAgnoItCmwA';
-        
-        // Global Data
-        let currentUser = null;
-        let isLoggedIn = true;
-        
-        let products = [
-            { id: 1, name: 'Avental Cirúrgico SMS', code: 'AV-SMS-001', composition: 'SMS', grammage: 40, price: 5.80, type: 'Aventais', stock: 500 },
-            { id: 2, name: 'Capote Hospitalar TNT', code: 'CP-TNT-002', composition: '100% Polipropileno', grammage: 30, price: 3.50, type: 'Capotes', stock: 300 },
-            { id: 3, name: 'Kit Aventais Descartáveis', code: 'KT-DESC-003', composition: 'TNT', grammage: 25, price: 25.00, type: 'Kits', stock: 150 }
-        ];
-        
-        let clientes = [
-            { id: 1, name: 'Hospital São Lucas', cnpj: '12.345.678/0001-90', city: 'São Paulo', phone: '(11) 3123-4567', email: 'contato@hospitalsaolucas.com.br', status: 'Ativo' },
-            { id: 2, name: 'Clínica Vida Verde', cnpj: '98.765.432/0001-10', city: 'Rio de Janeiro', phone: '(21) 2234-5678', email: 'vidaverde@clinica.com.br', status: 'Ativo' }
-        ];
-        
-        let osData = [
-            { id: 'OS-10245', cliente: 'Hospital São Lucas', produto: 'Avental Cirúrgico SMS', status: 'Entregue', valor: '5,800.00', data: '2025-01-10' },
-            { id: 'OS-10246', cliente: 'Clínica Vida Verde', produto: 'Capote Hospitalar TNT', status: 'Produção', valor: '2,350.00', data: '2025-01-11' },
-            { id: 'OS-10247', cliente: 'Hospital Regional', produto: 'Kit Aventais Descartáveis', status: 'Entrega', valor: '8,450.00', data: '2025-01-12' }
-        ];
-        
-        let productionData = [
-            { os: 'OS-10245', cliente: 'Hospital São Lucas', produto: 'Avental Cirúrgico SMS', etapa: 'Embalagem', progresso: 85 },
-            { os: 'OS-10246', cliente: 'Clínica Vida Verde', produto: 'Capote Hospitalar TNT', etapa: 'Corte', progresso: 45 }
-        ];
-        
-        // DOM Elements
-        const modalNovaOS = document.getElementById('modalNovaOS');
-        const modalNovoProduto = document.getElementById('modalNovoProduto');
-        const btnNovaOS = document.querySelectorAll('#btnNovaOS, #btnNovaOS2');
-        const btnCancelOS = document.getElementById('btnCancelOS');
-        const btnNovoProduto = document.getElementById('btnNovoProduto');
-        const btnCancelProduto = document.getElementById('btnCancelProduto');
-        
-        const syncBtn = document.getElementById('syncBtn');
-        const btnSyncNow = document.getElementById('btnSyncNow');
-        
-        // Initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('anoAtual').textContent = new Date().getFullYear();
-            
-            const dateInput = document.getElementById('dataEntregaOS');
-            const date = new Date();
-            date.setDate(date.getDate() + 7);
-            dateInput.value = date.toISOString().split('T')[0];
-            
-            setupEventListeners();
-            mockLogin();
-            updateSyncTime();
-            startAutoSync();
-        });
-        
-        function setupEventListeners() {
-            // Navbar Links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-            
-            // Product Search and Filter
-            document.getElementById('searchProdutos').addEventListener('input', filterProducts);
-            document.getElementById('filterProdutosTipo').addEventListener('change', filterProducts);
-            
-            // OS Search and Filter
-            document.getElementById('searchOS').addEventListener('input', filterOS);
-            document.getElementById('filterOSStatus').addEventListener('change', filterOS);
-            
-            // Clientes Search and Filter
-            document.getElementById('searchClientes').addEventListener('input', filterClientes);
-            document.getElementById('filterClientesStatus').addEventListener('change', filterClientes);
-            
-            // Modal Controls
-            btnNovaOS.forEach(btn => {
-                btn.addEventListener('click', openNovaOSModal);
-            });
-            
-            btnCancelOS.addEventListener('click', closeNovaOSModal);
-            modalNovaOS.addEventListener('click', function(e) {
-                if (e.target === this) closeNovaOSModal();
-            });
-            
-            btnNovoProduto.addEventListener('click', openNovoProdutoModal);
-            btnCancelProduto.addEventListener('click', closeNovoProdutoModal);
-            modalNovoProduto.addEventListener('click', function(e) {
-                if (e.target === this) closeNovoProdutoModal();
-            });
-            
-            // Forms
-            document.getElementById('formNovaOS').addEventListener('submit', handleNovaOS);
-            document.getElementById('formNovoProduto').addEventListener('submit', handleNovoProduto);
-            
-            // Sync Buttons
-            syncBtn.addEventListener('click', syncNow);
-            btnSyncNow.addEventListener('click', syncNow);
-            document.getElementById('btnAutoSync').addEventListener('click', toggleAutoSync);
-            
-            // Relatórios
-            document.querySelectorAll('#btnRelatorioVendas, #btnRelatorioEstoque, #btnRelatorioProducao, #btnGerarRelatorio').forEach(btn => {
-                btn.addEventListener('click', generateReport);
-            });
-            
-            // Calculo Valor OS
-            document.querySelectorAll('#quantidadeOS, #valorUnitarioOS').forEach(input => {
-                input.addEventListener('input', calculateTotalOS);
-            });
-        }
-        
-        // Mock login for demo
-        function mockLogin() {
-            currentUser = { 
-                name: 'Dr. Lucas Silva', 
-                email: 'lucas@medsucare.com.br', 
-                role: 'ADMIN',
-                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop' 
-            };
-            
-            isLoggedIn = true;
-            
-            showNotification('Bem-vindo, ' + currentUser.name + '!', 'success');
-        }
-        
-        // Modal Handling
-        function openNovaOSModal() {
-            modalNovaOS.classList.remove('hidden');
-            modalNovaOS.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeNovaOSModal() {
-            modalNovaOS.classList.add('hidden');
-            modalNovaOS.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function openNovoProdutoModal() {
-            modalNovoProduto.classList.remove('hidden');
-            modalNovoProduto.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeNovoProdutoModal() {
-            modalNovoProduto.classList.add('hidden');
-            modalNovoProduto.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Form Handlers
-        function handleNovaOS(e) {
-            e.preventDefault();
-            
-            const cliente = document.getElementById('clienteOS').options[document.getElementById('clienteOS').selectedIndex].text;
-            const produto = document.getElementById('produtoOS').options[document.getElementById('produtoOS').selectedIndex].text;
-            const quantidade = parseInt(document.getElementById('quantidadeOS').value);
-            const valor = parseFloat(document.getElementById('valorUnitarioOS').value);
-            const total = quantidade * valor;
-            
-            const date = new Date();
-            const osNumber = `OS-${String(date.getDate()).padStart(2,'0')}${String(date.getMonth()+1).padStart(2,'0')}${String(date.getHours()).padStart(2,'0')}${String(date.getMinutes()).padStart(2,'0')}`;
-            
-            addOSToTable(osNumber, cliente, produto, 'Orçamento', formatCurrency(total));
-            showNotification(`Ordem de Serviço ${osNumber} criada com sucesso!`, 'success');
-            closeNovaOSModal();
-            updateStats();
-        }
-        
-        function handleNovoProduto(e) {
-            e.preventDefault();
-            
-            const produto = {
-                id: products.length + 1,
-                name: document.getElementById('produtoNome').value,
-                code: document.getElementById('produtoCodigo').value,
-                composition: document.getElementById('produtoComposicao').value,
-                grammage: parseInt(document.getElementById('produtoGramatura').value),
-                price: parseFloat(Math.random() * 10 + 2).toFixed(2),
-                type: 'Aventais',
-                stock: 200
-            };
-            
-            products.push(produto);
-            addProductCard(produto);
-            showNotification('Produto adicionado com sucesso!', 'success');
-            closeNovoProdutoModal();
-            e.target.reset();
-            updateStats();
-        }
-        
-        // Sync & Google Sheets
-        let autoSyncInterval = null;
-        
-        function startAutoSync() {
-            autoSyncInterval = setInterval(() => {
-                syncNow();
-            }, 30000);
-            
-            syncNow();
-        }
-        
-        function syncNow() {
-            syncBtn.innerHTML = '<i class="fas fa-sync fa-spin"></i> Syncing...';
-            
-            simulateSync();
-            updateSyncTime();
-        }
-        
-        function toggleAutoSync() {
-            if (autoSyncInterval) {
-                clearInterval(autoSyncInterval);
-                autoSyncInterval = null;
-                document.getElementById('btnAutoSync').innerHTML = '<i class="fas fa-gear"></i> Auto Off';
-                document.getElementById('btnAutoSync').className = 'btn-danger flex-1 px-4 py-3 rounded-xl font-semibold';
-                showNotification('Auto-sync disabled!', 'warning');
-            } else {
-                startAutoSync();
-                document.getElementById('btnAutoSync').innerHTML = '<i class="fas fa-gear"></i> Auto On';
-                document.getElementById('btnAutoSync').className = 'btn-gradient flex-1 px-4 py-3 rounded-xl font-semibold';
-                showNotification('Auto-sync enabled!', 'success');
+
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            #print-area, #print-area * { visibility: visible; }
+            #print-area { 
+                position: absolute; 
+                left: 0; 
+                top: 0; 
+                width: 100%;
+                display: block !important;
             }
+            .no-print { display: none !important; }
         }
         
-        function simulateSync() {
-            setTimeout(() => {
-                syncBtn.innerHTML = '<i class="fas fa-sync text-yellow-300"></i> Sync';
-                
-                document.getElementById('connectionStatus').textContent = 'Conectado';
-                showNotification('Sincronização com Google Sheets realizada com sucesso!', 'success');
-                
-            }, 1000);
+        /* Label Styles for A4 Landscape */
+        @page { size: A4 landscape; margin: 0; }
+        
+        .label-unit {
+            width: 105mm;
+            height: 49.5mm;
+            display: inline-block;
+            margin: 0;
+            padding: 2mm;
+            box-sizing: border-box;
+            border: 1px dashed #ccc; /* Guide line */
+            overflow: hidden;
+            page-break-inside: avoid;
+            position: relative;
+            background: white;
         }
         
-        function updateSyncTime() {
-            const now = new Date();
-            document.getElementById('lastSyncTime').textContent = now.toLocaleString('pt-BR');
+        .label-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
         }
         
-        // Calculations & Filtering
-        function calculateTotalOS() {
-            const qtd = parseInt(document.getElementById('quantidadeOS').value) || 0;
-            const unit = parseFloat(document.getElementById('valorUnitarioOS').value) || 0;
-            const total = qtd * unit;
-            
-            document.getElementById('valorTotalOS').value = formatCurrency(total);
+        .label-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #20637D;
+            padding-bottom: 1mm;
         }
         
-        function filterProducts() {
-            const query = document.getElementById('searchProdutos').value.toLowerCase();
-            const tipo = document.getElementById('filterProdutosTipo').value;
-            const grid = document.getElementById('produtosGrid');
-            
-            let filtered = products.filter(p => 
-                (p.name.toLowerCase().includes(query) || 
-                 p.code.toLowerCase().includes(query) || 
-                 p.composition.toLowerCase().includes(query)) &&
-                (!tipo || p.type === tipo)
-            );
-            
-            grid.innerHTML = filtered.map(product => {
-                return `
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 card-hover">
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                            <i class="fas fa-hands-bubbles text-blue-600 mr-2"></i>${product.name}
-                        </h3>
-                        <p class="text-slate-600 text-sm mb-4"><i class="fas fa-receipt mr-2"></i><strong>Código:</strong> ${product.code}</p>
-                        <p class="text-slate-700 text-sm mb-2"><i class="fas fa-tint mr-2"></i><strong>Composição:</strong> ${product.composition}</p>
-                        <p class="text-2xl font-extrabold text-emerald-700 mb-3">R$ ${parseFloat(product.price).toFixed(2)}</p>
-                        <p class="text-sm text-slate-500 mb-4"><i class="fas fa-box mr-2"></i>Estoque: ${product.stock} unidades</p>
-                        <div class="flex gap-2">
-                            <button class="btn-primary flex-1 text-white px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-shopping-cart mr-2"></i> Comprar
-                            </button>
-                            <button class="btn-outline flex-1 px-4 py-2 rounded-xl font-semibold">
-                                <i class="fas fa-eye mr-2"></i> Ver
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500 italic">Nenhum produto encontrado</div>';
-            }
+        .label-logo {
+            height: 8mm;
+            width: auto;
+            margin-right: 2mm;
         }
         
-        function filterOS() {
-            const query = document.getElementById('searchOS').value.toLowerCase();
-            const status = document.getElementById('filterOSStatus').value;
-            
-            const filtered = osData.filter(os => 
-                (os.id.toLowerCase().includes(query) || 
-                 os.cliente.toLowerCase().includes(query)) &&
-                (!status || os.status === status)
-            );
-            
-            document.getElementById('osTableBody').innerHTML = filtered.map(os => {
-                return `
-                    <tr class="hover:bg-gradient-to-r from-cyan-50 to-blue-50 transition-all">
-                        <td class="px-6 py-4 font-semibold text-slate-700">
-                            <i class="fas fa-file-invoice text-cyan-600 mr-2"></i>${os.id}
-                        </td>
-                        <td class="px-6 py-4 text-slate-700">${os.cliente}</td>
-                        <td class="px-6 py-4 text-slate-700">${os.produto}</td>
-                        <td class="px-6 py-4"><span class="pill-success px-4 py-1 rounded-full text-xs font-semibold"><i class="fas fa-check-circle mr-1"></i>${os.status}</span></td>
-                        <td class="px-6 py-4 text-right font-semibold text-slate-700">R$ ${os.valor}</td>
-                        <td class="px-6 py-4 text-center">
-                            <div class="flex gap-2 justify-center">
-                                <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-eye"></i> Ver</button>
-                                <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-pen-to-square"></i> Editar</button>
-                                <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-trash"></i> Excluir</button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
+        .label-title {
+            font-weight: bold;
+            color: #20637D;
+            font-size: 11px;
         }
         
-        function filterClientes() {
-            const query = document.getElementById('searchClientes').value.toLowerCase();
-            const status = document.getElementById('filterClientesStatus').value;
-            
-            const filtered = clientes.filter(c => 
-                (c.name.toLowerCase().includes(query) || 
-                 c.cnpj.toLowerCase().includes(query)) &&
-                (!status || c.status === status)
-            );
-            
-            document.getElementById('clientesTableBody').innerHTML = filtered.map(cliente => {
-                return `
-                    <tr class="hover:bg-gradient-to-r from-emerald-50 to-teal-50 transition-all">
-                        <td class="px-6 py-4 font-semibold text-slate-700">C${String(cliente.id).padStart(3,'0')}</td>
-                        <td class="px-6 py-4">
-                            <div class="font-semibold text-slate-700">${cliente.name}</div>
-                            <div class="text-xs text-slate-500">CNPJ: ${cliente.cnpj}</div>
-                        </td>
-                        <td class="px-6 py-4 text-slate-700">${cliente.phone}</td>
-                        <td class="px-6 py-4 text-slate-700">${cliente.email}</td>
-                        <td class="px-6 py-4 text-slate-700">${cliente.city}</td>
-                        <td class="px-6 py-4 text-center">
-                            <div class="flex gap-2 justify-center">
-                                <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-eye"></i></button>
-                                <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-pen-to-square"></i></button>
-                                <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
+        .label-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.4;
         }
         
-        function addOSToTable(osNumber, cliente, produto, status, valor) {
-            const tableBody = document.getElementById('osTableBody');
-            const row = document.createElement('tr');
-            
-            row.className = 'hover:bg-gradient-to-r from-cyan-50 to-blue-50 transition-all';
-            row.innerHTML = `
-                <td class="px-6 py-4 font-semibold text-slate-700">
-                    <i class="fas fa-file-invoice text-cyan-600 mr-2"></i>${osNumber}
-                </td>
-                <td class="px-6 py-4 text-slate-700">${cliente}</td>
-                <td class="px-6 py-4 text-slate-700">${produto}</td>
-                <td class="px-6 py-4"><span class="pill-success px-4 py-1 rounded-full text-xs font-semibold"><i class="fas fa-check-circle mr-1"></i>${status}</span></td>
-                <td class="px-6 py-4 text-right font-semibold text-slate-700">${valor}</td>
-                <td class="px-6 py-4 text-center">
-                    <div class="flex gap-2 justify-center">
-                        <button class="btn-action btn-primary px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-eye"></i> Ver</button>
-                        <button class="btn-action btn-warning px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-pen-to-square"></i> Editar</button>
-                        <button class="btn-action btn-danger px-4 py-2 rounded-full text-white text-sm"><i class="fas fa-trash"></i> Excluir</button>
-                    </div>
-                </td>
-            `;
-            
-            tableBody.insertBefore(row, tableBody.firstChild);
+        .label-footer {
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 1mm;
         }
         
-        function addProductCard(product) {
-            const grid = document.getElementById('produtosGrid');
-            const card = document.createElement('div');
-            
-            card.className = 'bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 card-hover';
-            card.innerHTML = `
-                <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
-                    <i class="fas fa-hands-bubbles text-blue-600 mr-2"></i>${product.name}
-                </h3>
-                <p class="text-slate-600 text-sm mb-4"><i class="fas fa-receipt mr-2"></i><strong>Código:</strong> ${product.code}</p>
-                <p class="text-slate-700 text-sm mb-2"><i class="fas fa-tint mr-2"></i><strong>Composição:</strong> ${product.composition}</p>
-                <p class="text-slate-700 text-sm mb-2"><i class="fas fa-fire-flame-curved mr-2"></i><strong>Gramatura:</strong> ${product.grammage}g/m²</p>
-                <p class="text-2xl font-extrabold text-emerald-700 mb-3">R$ ${parseFloat(product.price).toFixed(2)}</p>
-                <p class="text-sm text-slate-500 mb-4"><i class="fas fa-box-open mr-2"></i>Estoque: ${product.stock} unidades</p>
-                <div class="flex gap-2">
-                    <button class="btn-primary flex-1 text-white px-4 py-2 rounded-xl font-semibold">
-                        <i class="fas fa-shopping-cart mr-2"></i> Comprar
-                    </button>
-                    <button class="btn-outline flex-1 px-4 py-2 rounded-xl font-semibold">
-                        <i class="fas fa-eye mr-2"></i> Ver
-                    </button>
-                </div>
-            `;
-            
-            grid.appendChild(card);
+        /* Estilos para etiquetas de fardos (4 por folha A4) */
+        .label-fardo {
+            width: 105mm;
+            height: 148.5mm;
+            display: inline-block;
+            margin: 0;
+            padding: 5mm;
+            box-sizing: border-box;
+            border: 1px dashed #ccc;
+            overflow: hidden;
+            page-break-inside: avoid;
+            position: relative;
+            background: white;
         }
         
-        // Stats Update
-        function updateStats() {
-            const osCount = document.querySelectorAll('#osTableBody tr').length;
-            document.getElementById('countOS').textContent = osCount;
-            
-            const clientesCount = clientes.length;
-            document.getElementById('countClientes').textContent = clientesCount;
-            
-            const stockCount = products.reduce((sum, p) => sum + p.stock, 0);
-            document.getElementById('countEstoque').textContent = formatNumber(stockCount);
-            
-            let totalSales = 0;
-            
-            document.querySelectorAll('#osTableBody tr').forEach(row => {
-                const cells = row.querySelectorAll('td');
-                if (cells.length > 0 && cells[4]) {
-                    const valueStr = cells[4].textContent.trim().replace('R$', '').replace(/\./g,'').replace(',','.');
-                    if (!isNaN(parseFloat(valueStr))) {
-                        totalSales += parseFloat(valueStr);
-                    }
-                }
-            });
-            
-            document.getElementById('countVendas').textContent = 'R$ ' + parseFloat(totalSales).toLocaleString('pt-BR', {minimumFractionDigits: 0, maximumFractionDigits: 0});
-            document.getElementById('totalRegistros').textContent = formatNumber(osCount + clientesCount + products.length);
+        .label-content-fardo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
         }
         
-        // Reports Generation
-        function generateReport() {
-            showNotification('Gerando relatório. Por favor, aguarde...', 'info');
-            
-            setTimeout(() => {
-                if (typeof window.jspdf !== 'undefined') {
-                    const doc = new window.jspdf.jsPDF();
-                    doc.setFontSize(20);
-                    doc.text('Relatório de Vendas - MedSuCare', 105, 20, { align: 'center' });
-                    
-                    doc.setFontSize(12);
-                    const date = new Date();
-                    doc.text(`Data: ${date.toLocaleDateString('pt-BR')}`, 14, 35);
-                    doc.text(`Hora: ${date.toLocaleTimeString('pt-BR')}`, 14, 45);
-                    
-                    doc.text('Lista de Ordem de Serviço:', 14, 60);
-                    
-                    doc.autoTable({
-                        startY: 70,
-                        head: [['OS', 'Cliente', 'Produto', 'Valor']],
-                        body: [
-                            ['OS-10245', 'Hospital São Lucas', 'Avental Cirúrgico SMS', 'R$ 5,800.00'],
-                            ['OS-10246', 'Clínica Vida Verde', 'Capote Hospitalar TNT', 'R$ 2,350.00'],
-                            ['OS-10247', 'Hospital Regional', 'Kit Aventais', 'R$ 8,450.00']
-                        ],
-                        theme: 'grid',
-                        headStyles: {
-                            fillColor: [6, 78, 59],
-                            textColor: 255,
-                            fontSize: 11,
-                            fontStyle: 'bold'
-                        }
-                    });
-                    
-                    doc.save('relatorio-vendas-medscucare.pdf');
-                    showNotification('Relatório gerado com sucesso!', 'success');
-                } else {
-                    showNotification('Gerando relatório em PDF... (Demo mode)', 'success');
-                }
-            }, 1500);
+        .label-header-fardo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 2px solid #20637D;
+            padding-bottom: 3mm;
+            margin-bottom: 5mm;
         }
         
-        // Notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 z-50 px-6 py-4 rounded-2xl text-white font-semibold shadow-2xl transition-all duration-300';
-            
-            switch (type) {
-                case 'success':
-                    notification.className += ' success-toast';
-                    notification.innerHTML = `<i class="fas fa-check-circle mr-3"></i> ${message}`;
-                    break;
-                case 'warning':
-                    notification.className += ' warning-toast';
-                    notification.innerHTML = `<i class="fas fa-exclamation-triangle mr-3"></i> ${message}`;
-                    break;
-                case 'error':
-                    notification.className += ' error-toast';
-                    notification.innerHTML = `<i class="fas fa-exclamation-circle mr-3"></i> ${message}`;
-                    break;
-                case 'info':
-                    notification.className += ' info-toast';
-                    notification.innerHTML = `<i class="fas fa-info-circle mr-3"></i> ${message}`;
-                    break;
-            }
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translateY(-20px)';
-                
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 5000);
+        .label-logo-fardo {
+            height: 15mm;
+            width: auto;
+            margin-bottom: 2mm;
         }
         
-        function formatCurrency(value) {
-            if (typeof value === 'number') {
-                return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            }
-            
-            return 'R$ 0.00';
+        .label-title-fardo {
+            font-weight: bold;
+            color: #20637D;
+            font-size: 16px;
+            text-align: center;
         }
         
-        function formatNumber(n) {
-            return n.toLocaleString('pt-BR');
+        .label-body-fardo {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.8;
+            padding: 0 5mm;
         }
         
-        console.log('%c MedSuCare System v1.0.0 %c Ready to use! %c','color: white; background: linear-gradient(135deg,#065f46,#10b981); font-weight: bold; font-size:14px; padding:8px;','color: black; background: linear-gradient(135deg,#d1fae5,#a7f3d0); font-size:13px; padding:8px;');
-        console.log('Developed for MedSuCare - Aventais e Capotes Hospitalares');
+        .label-body-fardo div {
+            margin-bottom: 2mm;
+        }
         
-    </script>
+        .label-footer-fardo {
+            text-align: center;
+            font-size: 10px;
+            color: #FF0000;
+            border-top: 1px solid #eee;
+            padding-top: 3mm;
+            font-weight: bold;
+        }
+    </style>
 </body>
 </html>
